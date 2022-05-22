@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaShoppingCart } from 'react-icons/fa';
 
 const Product = (props) => {
   const {
@@ -40,7 +41,9 @@ const Product = (props) => {
           onClick={() => props.handleProduct(props.product)}
         >
           {' '}
-          Add to cart
+          <div className="flex justify-between items-center">
+            <FaShoppingCart /> <h5>Add to cart</h5>
+          </div>
         </button>
       </div>
     </div>
