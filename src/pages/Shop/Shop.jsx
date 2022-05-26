@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 // import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-import Cart from '../Cart/Cart';
-import Product from '../Product/Product';
+import Cart from '../../components/Cart/Cart';
+import Product from '../../components/Product/Product';
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -60,7 +60,7 @@ const Shop = () => {
           )}
         </div>
         <div className="order-container w-full md:w-1/3 bg-slate-50">
-          <Cart cart={cart} handleRemove={handleRemove} />
+          <Cart key={cart.key} cart={cart} handleRemove={handleRemove} />
         </div>
       </div>
     </div>

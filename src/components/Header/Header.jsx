@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../images/logo.png';
 
 const Header = () => {
@@ -8,33 +9,33 @@ const Header = () => {
         <img className="w-50 md:w-100 " src={logo} alt="" />
       </div>
 
-      <ul class="flex flex-col   md:flex-row bg-black md:justify-center md:items-center p-3 ">
-        <li class="mx-2">
-          <a
-            class="text-white hover:bg-secondary py-3 px-8 font-bold"
-            href="/shop"
+      <ul className="flex flex-col   md:flex-row bg-black md:justify-center md:items-center p-3 ">
+        <li className="mx-2">
+          <Link
+            to="/"
+            className="text-white hover:bg-secondary py-3 px-8 font-bold"
           >
             Shop
-          </a>
+          </Link>
         </li>
-        <li class="mx-2">
-          <a
-            class="text-white hover:bg-secondary py-3 px-8 font-bold"
-            href="/order"
+        <li className="mx-2">
+          <Link
+            to="/order"
+            className="text-white hover:bg-secondary py-3 px-8 font-bold"
           >
             Order Review
-          </a>
+          </Link>
         </li>
-        <li class="mx-2">
-          <a
-            class="text-white hover:bg-secondary py-3 px-8  font-bold"
-            href="/inventory"
+        <li className="mx-2">
+          <Link
+            to="/manage"
+            className="text-white hover:bg-secondary py-3 px-8  font-bold"
           >
             Manage Inventory Here
-          </a>
+          </Link>
         </li>
-        {/* <li class="mx-2">
-          <a class="text-primary  font-bold " href="/login">
+        {/* <li className="mx-2">
+          <a className="text-primary  font-bold " href="/login">
             Login
           </a>
         </li> */}
