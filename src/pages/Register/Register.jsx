@@ -12,10 +12,10 @@ const Register = () => {
   return (
     <div className="flex flex-col justify-center items-center my-8">
       <h3 className="text-2xl"> Sign-Up</h3>
-      <div className="w-full flex justify-center items-center">
-        <div className=" w-3/5 flex justify-center items-center  ">
+      <div className="w-full flex justify-center items-center px-5 md:p-0">
+        <div className="w-full md:w-3/5 flex justify-center items-center  ">
           <form
-            className="w-3/5 px-10 py-5 border-slate-200 border-2 my-2"
+            className="w-full md:w-3/5 px-10 py-5 border-slate-200 border-2 my-2"
             onSubmit={handleSubmit(onSubmit)}
           >
             <div className="py-2">
@@ -90,6 +90,7 @@ const Register = () => {
               <input
                 className="  w-full px-5 py-2  rounded-sm bg-primary font-bold "
                 type="submit"
+                value="Sign Up"
               />
             </div>
           </form>
@@ -98,13 +99,13 @@ const Register = () => {
       <div className=" my-2">
         <hr className="w-full bg-slate-200 my-2 " />
         Already registered?
+        <Link
+          to="/login"
+          className=" mx-2 rounded-sm text-primary font-bold underline decoration-primary  "
+        >
+          Sign In
+        </Link>
       </div>
-      <Link
-        to="/login"
-        className="  w-25 px-20 py-2  rounded-sm bg-primary font-bold "
-      >
-        Sign In
-      </Link>
     </div>
   );
 };

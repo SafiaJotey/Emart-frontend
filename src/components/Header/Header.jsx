@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 import logo from '../../images/logo.png';
 
 const Header = () => {
+  const { user, signOut } = useAuth();
   return (
     <div>
       <div className="logo flex justify-center items-center p-2">
@@ -33,9 +35,18 @@ const Header = () => {
         </li> */}
         </ul>
 
-        <div className="text-white hover:bg-secondary py-3 px-8 font-bold ">
-          <Link to="login"> Login</Link>
-        </div>
+        {user.email ? (
+          <button
+            onClick={signOut}
+            className="text-white hover:bg-secondary py-3 px-8 font-bold "
+          >
+            <Link to="login"> Sign Out</Link>
+          </button>
+        ) : (
+          <div className="text-white hover:bg-secondary py-3 px-8 font-bold ">
+            <Link to="login"> Login</Link>
+          </div>
+        )}
       </div>
     </div>
   );

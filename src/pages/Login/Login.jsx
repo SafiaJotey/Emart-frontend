@@ -1,8 +1,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
+  const { user, signinWithGoogle } = useAuth();
   const {
     register,
     handleSubmit,
@@ -57,22 +59,28 @@ const Login = () => {
               <input
                 className="  w-full px-5 py-2  rounded-sm bg-primary font-bold "
                 type="submit"
-                value="signIn"
+                value="Sign In"
               />
             </div>
           </form>
         </div>
       </div>
-      <div className=" my-2">
-        <hr className="w-full bg-slate-200 my-2 " />
-        New to Addidas?
-      </div>
-      <Link
-        to="/register"
-        className="  px-20 py-2  rounded-sm bg-primary font-bold "
+      <button
+        onClick={signinWithGoogle}
+        className="px-10 py-2  rounded-sm bg-primary font-bold "
       >
-        Register
-      </Link>
+        SignIn with Google
+      </button>
+      <div className=" my-2">
+        <hr className="w-full bg-secondary my-5 " />
+        New to Addidas?{' '}
+        <Link
+          to="/register"
+          className="  mx-2 text-primary font-bold underline decoration-primary "
+        >
+          Register
+        </Link>
+      </div>
     </div>
   );
 };
