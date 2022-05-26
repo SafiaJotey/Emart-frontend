@@ -4,14 +4,14 @@ import useAuth from '../../hooks/useAuth';
 import logo from '../../images/logo.png';
 
 const Header = () => {
-  const { user, signOut } = useAuth();
+  const { user, logOut } = useAuth();
   return (
     <div>
       <div className="logo flex justify-center items-center p-2">
         <img className="w-50 md:w-100 " src={logo} alt="" />
       </div>
 
-      <div className="flex flex-col   md:flex-row bg-black justify-center items-center ">
+      <div className="flex flex-col   md:flex-row md:justify-between bg-black justify-center items-center ">
         <ul className="flex flex-col   md:flex-row justify-center items-center  ">
           <li className="mx-2 hover:bg-secondary py-3 px-8">
             <Link to="/" className="text-white  font-bold">
@@ -36,12 +36,20 @@ const Header = () => {
         </ul>
 
         {user.email ? (
-          <button
-            onClick={signOut}
-            className="text-white hover:bg-secondary py-3 px-8 font-bold "
-          >
-            <Link to="login"> Sign Out</Link>
-          </button>
+          <div className="text-center">
+            <div className="text-center md:inline-block">
+              <span className="text-primary mx-5">
+                <span className="text-white mx-2">Welcome !</span>{' '}
+                {user.displayName}
+              </span>
+            </div>
+            <button
+              onClick={logOut}
+              className="text-white hover:bg-secondary py-3 px-8 font-bold "
+            >
+              <Link to="login"> Sign Out</Link>
+            </button>
+          </div>
         ) : (
           <div className="text-white hover:bg-secondary py-3 px-8 font-bold ">
             <Link to="login"> Login</Link>
