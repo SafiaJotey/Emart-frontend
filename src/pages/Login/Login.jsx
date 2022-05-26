@@ -57,6 +57,7 @@ const Login = () => {
               <input
                 className="  w-full px-5 py-2  rounded-sm bg-primary font-bold "
                 type="submit"
+                value="signIn"
               />
             </div>
           </form>

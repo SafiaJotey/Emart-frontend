@@ -11,57 +11,60 @@ const Register = () => {
   const onSubmit = (data) => console.log(data);
   return (
     <div className="flex flex-col justify-center items-center my-8">
-      <h3 className="text-2xl"> Sign-In</h3>
-      <div className="flex justify-center items-center">
-        <div className="flex justify-center items-center p-5 border-slate-200 border-2 my-2">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="p-2">
+      <h3 className="text-2xl"> Sign-Up</h3>
+      <div className="w-full flex justify-center items-center">
+        <div className=" w-3/5 flex justify-center items-center  ">
+          <form
+            className="w-3/5 px-10 py-5 border-slate-200 border-2 my-2"
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <div className="py-2">
               <label className="p-2">Name</label>
               <br />
               <input
-                className="border-slate-100   border-2 p-2 rounded-sm"
+                className=" w-full border-slate-100   border-2 py-2  px-5 rounded-sm"
                 {...register('name', { required: true })}
               />
 
               {errors.name?.type === 'required' && 'name is required'}
             </div>
-            <div className="p-2">
+            <div className="py-2">
               <label className="p-2">Address</label>
               <br />
               <input
-                className="border-slate-100   border-2 p-2 rounded-sm"
+                className=" w-full border-slate-100   border-2 py-2  px-5 rounded-sm"
                 {...register('address', { required: true })}
               />
 
               {errors.address?.type === 'required' && 'address is required'}
             </div>
-            <div className="p-2">
+            <div className="py-2">
               <label className="p-2">Mobile</label>
               <br />
               <input
-                className="border-slate-100   border-2 p-2 rounded-sm"
+                className=" w-full border-slate-100   border-2 py-2  px-5 rounded-sm"
                 {...register('mobile', { required: true })}
               />
 
               {errors.mobile?.type === 'required' && 'Number is required'}
             </div>
-            <div className="p-2">
+            <div className="py-2">
               <label className="p-2">Email</label>
               <br />
               <input
                 type="email"
-                className="border-slate-100   border-2 p-2 rounded-sm"
+                className=" w-full border-slate-100   border-2 py-2  px-5 rounded-sm"
                 {...register('email', { required: true })}
               />
 
               {errors.email?.type === 'required' && 'Email name is required'}
             </div>
 
-            <div className="p-2">
+            <div className="py-2">
               <label className="p-2">Password</label>
               <br />
               <input
-                className="border-slate-100   border-2 p-2 rounded-sm"
+                className=" w-full border-slate-100   border-2 py-2  px-5 rounded-sm"
                 type="password"
                 {...register('password', {
                   required: true,
@@ -83,7 +86,7 @@ const Register = () => {
               {errors.password && 'Password name is required'}
             </div>
 
-            <div className="p-2">
+            <div className="py-2">
               <input
                 className="  w-full px-5 py-2  rounded-sm bg-primary font-bold "
                 type="submit"
@@ -94,13 +97,13 @@ const Register = () => {
       </div>
       <div className=" my-2">
         <hr className="w-full bg-slate-200 my-2 " />
-        New to Addidas?
+        Already registered?
       </div>
       <Link
-        to="/register"
+        to="/login"
         className="  w-25 px-20 py-2  rounded-sm bg-primary font-bold "
       >
-        Register
+        Sign In
       </Link>
     </div>
   );

@@ -3,7 +3,7 @@ import Header from './components/Header/Header.jsx';
 import Login from './pages/Login/Login.jsx';
 import ManageInventory from './pages/ManageInventory/ManageInventory';
 import OrderReview from './pages/OrderReview/OrderReview';
-import Register from './pages/Register.jsx';
+import Register from './pages/Register/Register.jsx';
 import Shop from './pages/Shop/Shop';
 
 function App() {
