@@ -18,9 +18,8 @@ const Product = (props) => {
     seller,
     stock,
   } = props.product;
-  const [totalPrice, setTotalPrice] = useState(price);
+
   const handleQuantity = (isIncreasing) => {
-    let newPrice;
     const select = document.getElementById(id);
     let quantity = parseInt(select.value);
     if (isIncreasing) {
@@ -29,8 +28,6 @@ const Product = (props) => {
       quantity = quantity - 1;
     }
     setCount(quantity);
-    newPrice = quantity * price;
-    setTotalPrice(newPrice);
   };
 
   props.product.quantity = count;
@@ -48,9 +45,7 @@ const Product = (props) => {
         <p className="text-lg font-bold">Category: {category}</p>
         <small className="text-sm text-secondary">ID: {id}</small>
         <p className="text-lg">By: {seller}</p>
-        <h6 className="text-lg text-primary font-bold">
-          Price: $ {totalPrice}
-        </h6>
+        <h6 className="text-lg text-primary font-bold">Price: $ {price}</h6>
         <div className="flex justify-between items-center">
           <p className="text-sm text-secondary">only {stock} left in stock</p>
           <div className="flex justify-end items-center">
