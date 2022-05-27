@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/Header/Header.jsx';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx';
 import AuthProvider from './context/AuthProvider.jsx';
 import Login from './pages/Login/Login.jsx';
 import ManageInventory from './pages/ManageInventory/ManageInventory';
@@ -15,7 +16,14 @@ function App() {
           <Header></Header>
           <Routes>
             <Route path="/" element={<Shop />} />
-            <Route path="order" element={<OrderReview />} />
+            <Route
+              path="order"
+              element={
+                <PrivateRoute>
+                  <OrderReview />
+                </PrivateRoute>
+              }
+            />
             <Route path="manage" element={<ManageInventory />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
