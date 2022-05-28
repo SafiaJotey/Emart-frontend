@@ -16,7 +16,6 @@ const Register = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    // data.displayName=data
     setData(data);
 
     signUp(data);

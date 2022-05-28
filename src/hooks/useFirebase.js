@@ -6,12 +6,14 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import InitializationAuthentication from '../firebase/firebase.init';
 InitializationAuthentication();
 const useFirebase = () => {
   const [user, setUser] = useState({});
+  const [name, setName] = useState('');
   const [successAlert, setSuccessAlert] = useState('');
   const [errorAlert, setErrorAlert] = useState('');
   const [loading, setLoading] = useState(true);
@@ -24,8 +26,9 @@ const useFirebase = () => {
     createUserWithEmailAndPassword(auth, data.email, data.password)
       .then((result) => {
         // Signed in
+
         const user = result.user;
-        user.displayName = data.name;
+        setUserName(data.name);
         console.log(user);
         setSuccessAlert('user created successfully');
         setErrorAlert('');
@@ -45,21 +48,27 @@ const useFirebase = () => {
       });
   };
   //Signin with email and password
-  const signIn = (email, password) => {
+  const signIn = (data, location, navigate) => {
+    console.log(user);
+    console.log(data);
     setLoading(true);
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+    const redirect_uri = location?.state?.from || '/';
+
+    signInWithEmailAndPassword(auth, data.email, data.password)
+      .then((result) => {
         // Signed in
-        const user = userCredential.user;
-        setSuccessAlert('successfully signed in');
-        setErrorAlert('');
+        const user = result.user;
+
+        navigate(redirect_uri);
+        console.log(user);
+
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        setSuccessAlert('');
+
         setErrorAlert(errorMessage);
       })
       .finally(() => {
@@ -68,11 +77,13 @@ const useFirebase = () => {
   };
 
   //sign in with google
-  const signinWithGoogle = () => {
+  const signinWithGoogle = (location, navigate) => {
+    const redirect_uri = location?.state?.from || '/';
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(redirect_uri);
       })
       .catch((error) => {});
   };
@@ -81,9 +92,7 @@ const useFirebase = () => {
   const logOut = () => {
     setLoading(true);
     signOut(auth)
-      .then(() => {
-        setUser({});
-      })
+      .then(() => {})
       .catch((error) => {
         // An error happened.
       })
@@ -101,12 +110,27 @@ const useFirebase = () => {
         setUser(user);
         console.log('user state');
       } else {
+        setUser({});
         console.log('no user');
       }
       setLoading(false);
     });
     return () => unsubscribe;
   }, [auth]);
+
+  const setUserName = (name) => {
+    console.log(name);
+    updateProfile(auth.currentUser, {
+      displayName: name,
+    })
+      .then(() => {
+        // Profile updated!
+        console.log('update');
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
   return {
     loading,

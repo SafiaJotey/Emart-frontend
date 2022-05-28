@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Error from '../../../components/alert/Error/Error';
 import Success from '../../../components/alert/Success/Success';
 import Spinner from '../../../components/Spinner/Spinner';
 import useAuth from '../../../hooks/useAuth';
 
 const Login = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const { user, signinWithGoogle, signIn, loading, successAlert, errorAlert } =
     useAuth();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    setEmail(data.email);
-    setPassword(data.password);
-    signIn(email, password);
+    console.log(user);
+    signIn(data, location, navigate);
   };
   return (
     <div className="flex flex-col justify-center items-center my-8">
@@ -83,7 +83,7 @@ const Login = () => {
       {!loading && (
         <div>
           <button
-            onClick={signinWithGoogle}
+            onClick={() => signinWithGoogle(location, navigate)}
             className="px-10 py-2  rounded-sm bg-primary font-bold "
           >
             SignIn with Google
