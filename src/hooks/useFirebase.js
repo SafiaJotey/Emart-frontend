@@ -12,6 +12,8 @@ import InitializationAuthentication from '../firebase/firebase.init';
 InitializationAuthentication();
 const useFirebase = () => {
   const [user, setUser] = useState({});
+  const [successAlert, setSuccessAlert] = useState('');
+  const [errorAlert, setErrorAlert] = useState('');
   const [loading, setLoading] = useState(true);
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
@@ -23,16 +25,22 @@ const useFirebase = () => {
       .then((result) => {
         // Signed in
         const user = result.user;
+        user.displayName = data.name;
         console.log(user);
+        setSuccessAlert('user created successfully');
+        setErrorAlert('');
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorMessage);
-        // ..
+
+        setSuccessAlert('');
+        setErrorAlert(errorMessage);
       })
       .finally(() => {
+        setSuccessAlert('');
+        setErrorAlert('');
         setLoading(false);
       });
   };
@@ -44,11 +52,15 @@ const useFirebase = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        setSuccessAlert('successfully signed in');
+        setErrorAlert('');
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        setSuccessAlert('');
+        setErrorAlert(errorMessage);
       })
       .finally(() => {
         setLoading(false);
@@ -76,6 +88,8 @@ const useFirebase = () => {
         // An error happened.
       })
       .finally(() => {
+        setSuccessAlert('');
+        setErrorAlert('');
         setLoading(false);
       });
   };
@@ -101,6 +115,8 @@ const useFirebase = () => {
     signIn,
     signinWithGoogle,
     logOut,
+    successAlert,
+    errorAlert,
   };
 };
 export default useFirebase;

@@ -2,11 +2,11 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/Header/Header.jsx';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx';
 import AuthProvider from './context/AuthProvider.jsx';
-import Login from './pages/Login/Login.jsx';
 import ManageInventory from './pages/ManageInventory/ManageInventory';
 import OrderReview from './pages/OrderReview/OrderReview';
-import Register from './pages/Register/Register.jsx';
 import Shop from './pages/Shop/Shop';
+import Login from './pages/UserAuth/Login/Login.jsx';
+import Register from './pages/UserAuth/Register/Register.jsx';
 
 function App() {
   return (

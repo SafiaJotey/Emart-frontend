@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import Spinner from '../../components/Spinner/Spinner';
-import useAuth from '../../hooks/useAuth';
+import Error from '../../../components/alert/Error/Error';
+import Success from '../../../components/alert/Success/Success';
+import Spinner from '../../../components/Spinner/Spinner';
+import useAuth from '../../../hooks/useAuth';
 
 const Login = () => {
-  const { user, signinWithGoogle, signIn, loading } = useAuth();
+  const { user, signinWithGoogle, signIn, loading, successAlert, errorAlert } =
+    useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const {
@@ -20,6 +23,8 @@ const Login = () => {
   };
   return (
     <div className="flex flex-col justify-center items-center my-8">
+      {successAlert && <Success>{successAlert}</Success>}
+      {errorAlert && <Error>{errorAlert}</Error>}
       <h3 className="text-2xl"> Sign-In</h3>
       <div className="flex justify-center items-center">
         <div className="flex justify-center items-center p-5 border-slate-200 border-2 my-2">
@@ -75,22 +80,26 @@ const Login = () => {
           {loading && <Spinner />}
         </div>
       </div>
-      <button
-        onClick={signinWithGoogle}
-        className="px-10 py-2  rounded-sm bg-primary font-bold "
-      >
-        SignIn with Google
-      </button>
-      <div className=" my-2">
-        <hr className="w-full bg-secondary my-5 " />
-        New to Addidas?{' '}
-        <Link
-          to="/register"
-          className="  mx-2 text-primary font-bold underline decoration-primary "
-        >
-          Register
-        </Link>
-      </div>
+      {!loading && (
+        <div>
+          <button
+            onClick={signinWithGoogle}
+            className="px-10 py-2  rounded-sm bg-primary font-bold "
+          >
+            SignIn with Google
+          </button>
+          <div className=" my-2">
+            <hr className="w-full bg-secondary my-5 " />
+            New to Addidas?{' '}
+            <Link
+              to="/register"
+              className="  mx-2 text-primary font-bold underline decoration-primary "
+            >
+              Register
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

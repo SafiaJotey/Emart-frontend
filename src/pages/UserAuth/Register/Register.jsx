@@ -1,25 +1,30 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import Spinner from '../../components/Spinner/Spinner';
-import useAuth from '../../hooks/useAuth';
+import Error from '../../../components/alert/Error/Error';
+import Success from '../../../components/alert/Success/Success';
+import Spinner from '../../../components/Spinner/Spinner';
+import useAuth from '../../../hooks/useAuth';
 
 const Register = () => {
   const [data, setData] = useState('');
 
-  const { signUp, loading } = useAuth();
+  const { signUp, loading, successAlert, errorAlert } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
+    // data.displayName=data
     setData(data);
 
     signUp(data);
   };
   return (
     <div className="flex flex-col justify-center items-center my-8">
+      {successAlert && <Success>{successAlert}</Success>}
+      {errorAlert && <Error>{errorAlert}</Error>}
       <h3 className="text-2xl"> Sign-Up</h3>
       <div className="w-full flex justify-center items-center px-5 md:p-0">
         <div className="w-full md:w-3/5 flex justify-center items-center  ">
@@ -108,16 +113,18 @@ const Register = () => {
           {loading && <Spinner />}
         </div>
       </div>
-      <div className=" my-2">
-        <hr className="w-full bg-slate-200 my-2 " />
-        Already registered?
-        <Link
-          to="/login"
-          className=" mx-2 rounded-sm text-primary font-bold underline decoration-primary  "
-        >
-          Sign In
-        </Link>
-      </div>
+      {!loading && (
+        <div className=" my-2">
+          <hr className="w-full bg-slate-200 my-2 " />
+          Already registered?
+          <Link
+            to="/login"
+            className=" mx-2 rounded-sm text-primary font-bold underline decoration-primary  "
+          >
+            Sign In
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
