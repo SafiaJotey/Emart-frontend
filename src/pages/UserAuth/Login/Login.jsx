@@ -18,7 +18,6 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(user);
     signIn(data, location, navigate);
   };
   return (

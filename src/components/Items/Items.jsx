@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Items = (props) => {
-  console.log(props);
   return (
     <div className="flex justify-between items-center ">
       <h5 className="mr-3 ">
