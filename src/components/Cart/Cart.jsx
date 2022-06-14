@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom';
 import useItem from '../../hooks/useItem';
 import Items from '../Items/Items';
 
-const Cart = () => {
+const Cart = (props) => {
   const { cart, handleRemove, setCartQuantity } = useItem();
 
   let totalQuantity = 0;
@@ -20,20 +21,19 @@ const Cart = () => {
   const grandTotal = total + shippingCharge + tax;
 
   return (
-    <div className="order-container w-full md:w-1/3 bg-slate-50">
-      <div className="flex flex-col items-start p-5 md:sticky md:top-2 ">
-        <h3 className="text-2xl font-bold">Order Summery:</h3>
-        <h5> Total Items: {totalQuantity}</h5>
-        <h5>Product Price: {total.toFixed(2)}</h5>
+    <div className="flex flex-col items-start p-5 md:sticky md:top-2 ">
+      <h3 className="text-2xl font-bold">Order Summery:</h3>
+      <h5> Total Items: {totalQuantity}</h5>
+      <h5>Product Price: {total.toFixed(2)}</h5>
 
-        <h5>Items list: </h5>
-        {cart.map((item) => (
-          <Items item={item} handleRemove={handleRemove} />
-        ))}
-        <h5>Shipping Charge: $ {shippingCharge}</h5>
-        <h5> Tax : $ {tax.toFixed(2)}</h5>
-        <h5> Total Amount: $ {grandTotal.toFixed(2)}</h5>
-      </div>
+      <h5>Items list: </h5>
+      {cart.map((item) => (
+        <Items item={item} handleRemove={handleRemove} />
+      ))}
+      <h5>Shipping Charge: $ {shippingCharge}</h5>
+      <h5> Tax : $ {tax.toFixed(2)}</h5>
+      <h5> Total Amount: $ {grandTotal.toFixed(2)}</h5>
+      <Link to="order">{props.children}</Link>
     </div>
   );
 };
