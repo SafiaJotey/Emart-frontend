@@ -5,13 +5,13 @@ const OrderReview = () => {
   return (
     <div className="flex flex-col-reverse  md:flex-row  md: justify-center ">
       <div className="orders w-full md:w-2/3">
-        <div class="p-4 w-full bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-          <div class="flex justify-between items-center mb-4">
-            <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">
+        <div className="p-4 w-full bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700 my-2">
+          <div className="flex justify-between items-center mb-4">
+            <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
               All Orders
             </h5>
           </div>
-          <div class="flow-root">
+          <div className="flow-root">
             <ul>
               <Order></Order>
             </ul>
