@@ -57,8 +57,11 @@ const useProducts = () => {
       });
   }, [page]);
 
-  const handleRemove = (product) => {
-    console.log('clicked');
+  const handleRemove = (productId) => {
+    console.log('cart', cart);
+    console.log('id', productId);
+    const newCart = cart.filter((product) => product._id !== productId);
+    setCart(newCart);
   };
   useEffect(() => {
     fetch('https://afternoon-gorge-26422.herokuapp.com/products')

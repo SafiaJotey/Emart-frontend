@@ -3,7 +3,7 @@ import Order from './Order';
 
 const OrderReview = () => {
   return (
-    <div className="flex justify-center">
+    <div className="flex flex-col-reverse  md:flex-row  md: justify-center ">
       <div className="orders w-full md:w-2/3">
         <div class="p-4 w-full bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
           <div class="flex justify-between items-center mb-4">
@@ -12,10 +12,7 @@ const OrderReview = () => {
             </h5>
           </div>
           <div class="flow-root">
-            <ul
-              role="list"
-              className="divide-y divide-gray-200 dark:divide-gray-700"
-            >
+            <ul>
               <Order></Order>
             </ul>
           </div>
