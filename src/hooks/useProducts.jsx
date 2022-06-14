@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { addToDb, getStoreCart } from '../utilities/fakedb';
+import { addToDb, getStoreCart, removeFromDb } from '../utilities/fakedb';
 
 const useProducts = () => {
   const [products, setProducts] = useState([]);
@@ -62,6 +62,7 @@ const useProducts = () => {
     console.log('id', productId);
     const newCart = cart.filter((product) => product._id !== productId);
     setCart(newCart);
+    removeFromDb(productId);
   };
   useEffect(() => {
     fetch('https://afternoon-gorge-26422.herokuapp.com/products')
