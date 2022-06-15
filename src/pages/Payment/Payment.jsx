@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import Modal from '../../components/Modal/Modal';
 import payment from '../../images/payment.png';
 import { clearTheCart, getStoreCart } from '../../utilities/fakedb';
+import PaymentModal from './PaymentModal';
 const Payment = () => {
   const [data, setData] = useState('');
   const [showModal, setShowModal] = useState(false);
@@ -28,7 +28,7 @@ const Payment = () => {
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
-        reset();
+        // reset();
         clearTheCart();
       });
   };
@@ -97,10 +97,10 @@ const Payment = () => {
                     type="submit"
                     value="Proceed"
                   />
-                  <Modal
+                  <PaymentModal
                     showModal={showModal}
                     setShowModal={setShowModal}
-                  ></Modal>
+                  ></PaymentModal>
                 </div>
               </form>
             </div>
