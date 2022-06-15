@@ -10,7 +10,7 @@ const Pagination = () => {
           className={
             number === page
               ? 'py-1 px-3 m-1 border-2 border-black rounded-lg bg-white text-black'
-              : 'py-1 px-3 m-1 border-2 rounded-lg bg-secondary text-white'
+              : 'py-1 px-3 m-1 border-2 rounded-lg bg-primary text-white'
           }
           key={number}
           onClick={() => setPage(number)}

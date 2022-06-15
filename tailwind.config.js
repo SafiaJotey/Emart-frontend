@@ -3,8 +3,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#ffc108',
-        secondary: '#81838b',
+        primary: 'black',
+        secondary: '#a66fa8',
+        reviewColor: '#ffc108',
       },
     },
   },

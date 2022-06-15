@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Cart from '../../components/Cart/Cart';
 import Order from './Order';
 
@@ -20,9 +21,12 @@ const OrderReview = () => {
       </div>
       <div className="placeOrder ">
         <Cart>
-          <button className="px-8 py-2  rounded-lg bg-primary text-sm font-bold my-4">
-            Place Order
-          </button>
+          <Link to="/payment">
+            {' '}
+            <button className="px-8 py-2 text-white rounded-lg bg-primary text-sm font-bold my-4">
+              Place Order
+            </button>
+          </Link>
         </Cart>
       </div>
     </div>

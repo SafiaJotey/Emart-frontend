@@ -4,7 +4,7 @@ import useItem from '../../hooks/useItem';
 const Search = () => {
   const { handleSearch, cartQuantity } = useItem();
   return (
-    <div className="bg-secondary flex justify-between items-center py-2 px-2 md:px-5 ">
+    <div className="bg-secondary flex justify-between items-center py-2 px-2 md:px-5 sticky  top-18">
       <input
         className="w-full md:w-3/5 p-2 rounded-sm "
         type="text"

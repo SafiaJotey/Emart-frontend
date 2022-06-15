@@ -56,7 +56,7 @@ const Product = () => {
                   </p>
                   <div className="flex justify-end items-center">
                     {' '}
-                    <p className="text-md text-primary font-bold">
+                    <p className="text-md text-reviewColor font-bold ">
                       {' '}
                       <Rating
                         initialRating={product.ratings}
@@ -65,7 +65,10 @@ const Product = () => {
                         fullSymbol={<AiTwotoneStar />}
                       />
                     </p>
-                    <p className="text-md text-primary font-bold">
+                    <p
+                      className="text-md text-primary 
+                    font-bold"
+                    >
                       ({product.ratingsCount})
                     </p>
                   </div>
@@ -76,7 +79,7 @@ const Product = () => {
                   onClick={() => handleProduct(product)}
                 >
                   {' '}
-                  <div className="flex justify-between items-center">
+                  <div className="flex justify-between text-white items-center">
                     <FaShoppingCart /> <h5>Add to cart</h5>
                   </div>
                 </button>

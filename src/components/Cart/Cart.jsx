@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import useItem from '../../hooks/useItem';
 import Items from '../Items/Items';
 
@@ -21,7 +20,7 @@ const Cart = (props) => {
   const grandTotal = total + shippingCharge + tax;
 
   return (
-    <div className="flex flex-col items-start p-5 md:sticky md:top-2 ">
+    <div className="flex flex-col items-start p-5 md:sticky md:top-24 ">
       <h3 className="text-2xl font-bold">Order Summery:</h3>
       <h5> Total Items: {totalQuantity}</h5>
       <h5>Product Price: {total.toFixed(2)}</h5>
@@ -33,7 +32,7 @@ const Cart = (props) => {
       <h5>Shipping Charge: $ {shippingCharge}</h5>
       <h5> Tax : $ {tax.toFixed(2)}</h5>
       <h5> Total Amount: $ {grandTotal.toFixed(2)}</h5>
-      <Link to="order">{props.children}</Link>
+      {props.children}
     </div>
   );
 };
