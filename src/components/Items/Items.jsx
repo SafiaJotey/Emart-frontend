@@ -23,7 +23,7 @@ export default Items;
 // <div>
 // <p className="font-xs text-secondary">select quantity</p>
 // <button
-//   className="p-2 bg-slate-50 rounded-sm"
+//   className="p-2 bg-bannerBg rounded-sm"
 //   onClick={() => handleQuantity(true, product)}
 // >
 //   <AiOutlinePlus />
@@ -36,7 +36,7 @@ export default Items;
 //   value={count}
 // />
 // <button
-//   className="p-2 bg-slate-50 rounded-sm"
+//   className="p-2 bg-bannerBg rounded-sm"
 //   onClick={() => handleQuantity(false, product)}
 // >
 //   <AiOutlineMinus />

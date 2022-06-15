@@ -6,6 +6,7 @@ module.exports = {
         primary: 'black',
         secondary: '#a66fa8',
         reviewColor: '#ffc108',
+        bannerBg: '#f5f2f5',
       },
     },
   },

@@ -2,7 +2,7 @@ import banner from '../../images/banner2.png';
 
 const Banner = () => {
   return (
-    <div className="flex flex-col justify-center items-center bg-slate-50">
+    <div className="flex flex-col justify-center items-center bg-bannerBg">
       <div className="">
         <h1 className=" text-4xl py-5">
           <span className="text-reviewColor font-bold text-6xl">Addidas, </span>{' '}

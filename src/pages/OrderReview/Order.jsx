@@ -25,7 +25,7 @@ const Order = () => {
                   Price: ${product.price}
                 </p>
               </div>
-              <div className="inline-flex items-center text-base font-bold text-red-600 px-1 md:px-5">
+              <div className="inline-flex items-center text-base font-bold text-reviewColor px-1 md:px-5">
                 <button onClick={() => handleRemove(product._id)}>
                   Remove
                 </button>
