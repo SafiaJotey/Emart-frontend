@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import Cart from '../../components/Cart/Cart';
+import useItem from '../../hooks/useItem';
 import Order from './Order';
 
 const OrderReview = () => {
+  const { cart } = useItem();
   return (
     <div className="flex flex-col-reverse  md:flex-row  md: justify-center ">
       <div className="orders w-full md:w-2/3">
@@ -21,12 +23,14 @@ const OrderReview = () => {
       </div>
       <div className="placeOrder ">
         <Cart>
-          <Link to="/payment">
-            {' '}
-            <button className="px-8 py-2 text-white rounded-lg bg-primary text-sm font-bold my-4">
-              Place Order
-            </button>
-          </Link>
+          {cart.length ? (
+            <Link to="/payment">
+              {' '}
+              <button className="px-8 py-2 text-white rounded-lg bg-primary text-sm font-bold my-4">
+                Place Order
+              </button>
+            </Link>
+          ) : null}
         </Cart>
       </div>
     </div>

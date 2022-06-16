@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import Error from '../../../components/alert/Error/Error';
@@ -102,7 +102,7 @@ const Register = () => {
 
               <div className="py-2">
                 <input
-                  className="  w-full px-5 py-2  rounded-sm bg-primary font-bold "
+                  className="  w-full px-5 py-2  rounded-sm bg-primary font-bold text-white"
                   type="submit"
                   value="Sign Up"
                 />
@@ -118,7 +118,7 @@ const Register = () => {
           Already registered?
           <Link
             to="/login"
-            className=" mx-2 rounded-sm text-primary font-bold underline decoration-primary  "
+            className=" mx-2 rounded-sm font-bold underline decoration-primary  text-white"
           >
             Sign In
           </Link>

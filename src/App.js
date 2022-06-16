@@ -22,15 +22,15 @@ function App() {
             <Routes>
               <Route path="/" element={<Shop />} />
 
+              <Route path="order" element={<OrderReview />} />
               <Route
-                path="order"
+                path="payment"
                 element={
                   <PrivateRoute>
-                    <OrderReview />
+                    <Payment />
                   </PrivateRoute>
                 }
               />
-              <Route path="payment" element={<Payment />} />
               <Route path="manage" element={<ManageInventory />} />
               <Route path="login" element={<Login />} />
               <Route path="register" element={<Register />} />

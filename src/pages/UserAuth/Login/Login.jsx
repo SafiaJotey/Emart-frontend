@@ -1,4 +1,3 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Error from '../../../components/alert/Error/Error';
@@ -69,7 +68,7 @@ const Login = () => {
 
               <div className="p-2">
                 <input
-                  className="  w-full px-5 py-2  rounded-sm bg-primary font-bold "
+                  className="  w-full px-5 py-2  rounded-sm bg-primary font-bold text-white"
                   type="submit"
                   value="Sign In"
                 />
@@ -83,7 +82,7 @@ const Login = () => {
         <div>
           <button
             onClick={() => signinWithGoogle(location, navigate)}
-            className="px-10 py-2  rounded-sm bg-primary font-bold "
+            className="px-10 py-2  rounded-sm bg-primary font-bold text-white"
           >
             SignIn with Google
           </button>
