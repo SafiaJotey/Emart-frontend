@@ -15,6 +15,7 @@ const Payment = () => {
   } = useForm();
   const onSubmit = (data) => {
     setShowModal(true);
+    setData(data);
 
     const saveCart = getStoreCart();
     data.order = saveCart;
@@ -100,6 +101,7 @@ const Payment = () => {
                   <PaymentModal
                     showModal={showModal}
                     setShowModal={setShowModal}
+                    data={data}
                   ></PaymentModal>
                 </div>
               </form>
