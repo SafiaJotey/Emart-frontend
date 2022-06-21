@@ -20,11 +20,11 @@ const Header = () => {
               Order Review
             </Link>
           </li>
-          <li className="mx-2 hover:bg-secondary py-3 px-8 ">
+          {/* <li className="mx-2 hover:bg-secondary py-3 px-8 ">
             <Link to="/manage" className="text-white  font-bold">
               Manage Inventory Here
             </Link>
-          </li>
+          </li> */}
           {/* <li className="mx-2">
           <a className="text-primary  font-bold " href="/login">
             Login
@@ -35,7 +35,7 @@ const Header = () => {
         {user.email ? (
           <div className="text-center">
             <div className="text-center md:inline-block">
-              <span className="text-primary mx-5">
+              <span className="text-reviewColor mx-5">
                 <span className="text-white mx-2">Welcome !</span>{' '}
                 {user.displayName}
               </span>

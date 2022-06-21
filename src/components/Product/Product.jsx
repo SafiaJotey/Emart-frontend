@@ -1,26 +1,13 @@
-import { useState } from 'react';
 import { AiTwotoneStar } from 'react-icons/ai';
 import { FaShoppingCart } from 'react-icons/fa';
 import { FiStar } from 'react-icons/fi';
 import Rating from 'react-rating';
+import { Link } from 'react-router-dom';
 import useItem from '../../hooks/useItem';
 import Pagination from '../Pagination/Pagination';
 
 const Product = () => {
   const { handleProduct, displaProducts } = useItem();
-  const [count, setCount] = useState(1);
-
-  const handleQuantity = (isIncreasing, product) => {
-    const select = document.getElementById(product.id);
-    let quantity = parseInt(select.value);
-    if (isIncreasing) {
-      quantity = quantity + 1;
-    } else if (quantity > 1) {
-      quantity = quantity - 1;
-    }
-    setCount(quantity);
-    product.quantity = count;
-  };
 
   return (
     <div>
@@ -74,15 +61,25 @@ const Product = () => {
                   </div>
                 </div>
 
-                <button
-                  className="px-5 py-2 rounded-lg bg-primary text-sm font-bold my-2"
-                  onClick={() => handleProduct(product)}
-                >
-                  {' '}
-                  <div className="flex justify-between text-white items-center">
-                    <FaShoppingCart /> <h5>Add to cart</h5>
+                <div className="flex justify-between items-center">
+                  <button
+                    className="px-5 py-2 rounded-lg bg-primary text-sm font-bold my-2 "
+                    onClick={() => handleProduct(product)}
+                  >
+                    {' '}
+                    <div className="flex justify-between text-white items-center">
+                      <FaShoppingCart /> <h5>Add to cart</h5>
+                    </div>
+                  </button>
+                  <div>
+                    <Link
+                      to={`/view/${product._id}`}
+                      className="text-secondary  font-bold "
+                    >
+                      View product{' '}
+                    </Link>
                   </div>
-                </button>
+                </div>
               </div>
             </div>
           ))

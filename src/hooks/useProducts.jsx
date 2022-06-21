@@ -6,6 +6,7 @@ const useProducts = () => {
   const [allProducts, setAllProducts] = useState([]);
   const [cartQuantity, setCartQuantity] = useState(0);
   const [cart, setCart] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
   const [displaProducts, setDisplayProducts] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(0);
@@ -90,7 +91,8 @@ const useProducts = () => {
     pageCount,
     cartQuantity,
     setCartQuantity,
-
+    totalPrice,
+    setTotalPrice,
     page,
     setPage,
   };

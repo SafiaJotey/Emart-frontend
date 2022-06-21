@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import payment from '../../images/payment.png';
-import { clearTheCart, getStoreCart } from '../../utilities/fakedb';
+import { getStoreCart } from '../../utilities/fakedb';
 import PaymentModal from './PaymentModal';
 const Payment = () => {
   const [data, setData] = useState('');
@@ -29,8 +29,8 @@ const Payment = () => {
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
-        // reset();
-        clearTheCart();
+        reset();
+        // clearTheCart();
       });
   };
   return (
