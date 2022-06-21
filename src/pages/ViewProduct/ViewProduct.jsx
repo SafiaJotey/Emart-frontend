@@ -5,10 +5,10 @@ import useItem from '../../hooks/useItem';
 import ReviewModal from './ReviewModal';
 
 const ViewProduct = () => {
-  const { handleProduct } = useItem();
+  const { handleProduct, handleQuantity, count } = useItem();
   const [item, setItem] = useState([]);
   const { id } = useParams();
-  const [count, setCount] = useState(1);
+
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -17,17 +17,6 @@ const ViewProduct = () => {
       .then((data) => setItem(data[0]));
   }, [id]);
   console.log(item);
-  const handleQuantity = (isIncreasing, product) => {
-    const select = document.getElementById(product.id);
-    let quantity = parseInt(select.value);
-    if (isIncreasing) {
-      quantity = quantity + 1;
-    } else if (quantity > 1) {
-      quantity = quantity - 1;
-    }
-    setCount(quantity);
-    product.quantity = count;
-  };
 
   return (
     <div className="flex justify-center p-16 ">
@@ -77,7 +66,7 @@ const ViewProduct = () => {
             className="w-1/12 p-2 text-center mx-2"
             id={item.id}
             min={1}
-            value={count}
+            value={item.quantity}
           />
           <button
             className="p-2 bg-bannerBg rounded-sm"

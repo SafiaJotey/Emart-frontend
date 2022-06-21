@@ -1,4 +1,4 @@
-import { AiTwotoneStar } from 'react-icons/ai';
+import { AiOutlineMinus, AiOutlinePlus, AiTwotoneStar } from 'react-icons/ai';
 import { FaShoppingCart } from 'react-icons/fa';
 import { FiStar } from 'react-icons/fi';
 import Rating from 'react-rating';
@@ -7,7 +7,7 @@ import useItem from '../../hooks/useItem';
 import Pagination from '../Pagination/Pagination';
 
 const Product = () => {
-  const { handleProduct, displaProducts } = useItem();
+  const { handleProduct, displaProducts, handleQuantity, count } = useItem();
 
   return (
     <div>
@@ -60,7 +60,28 @@ const Product = () => {
                     </p>
                   </div>
                 </div>
-
+                <div className="my-1">
+                  <p className="font-xs text-secondary">select quantity</p>
+                  <button
+                    className="p-2 bg-bannerBg rounded-sm"
+                    onClick={() => handleQuantity(true, product)}
+                  >
+                    <AiOutlinePlus />
+                  </button>
+                  <input
+                    type="text"
+                    className="w-1/12 p-2 text-center mx-2"
+                    id={product.id}
+                    min={1}
+                    value={parseInt(product.quantity) + 1}
+                  />
+                  <button
+                    className="p-2 bg-bannerBg rounded-sm"
+                    onClick={() => handleQuantity(false, product)}
+                  >
+                    <AiOutlineMinus />
+                  </button>
+                </div>
                 <div className="flex justify-between items-center">
                   <button
                     className="px-5 py-2 rounded-lg bg-primary text-sm font-bold my-2 "

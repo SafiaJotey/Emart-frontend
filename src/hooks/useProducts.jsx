@@ -3,6 +3,7 @@ import { addToDb, getStoreCart, removeFromDb } from '../utilities/fakedb';
 
 const useProducts = () => {
   const [products, setProducts] = useState([]);
+  const [count, setCount] = useState(1);
   const [allProducts, setAllProducts] = useState([]);
   const [cartQuantity, setCartQuantity] = useState(0);
   const [cart, setCart] = useState([]);
@@ -17,16 +18,16 @@ const useProducts = () => {
     if (exist) {
       const rest = cart.filter((pd) => pd._id !== product._id);
 
-      exist.quantity = exist.quantity + 1;
+      exist.quantity = exist.quantity + count;
 
       newCart = [...rest, exist];
     } else {
-      product.quantity = 1;
+      product.quantity = count;
       newCart = [...cart, product];
     }
 
     setCart(newCart);
-    addToDb(product._id);
+    addToDb(product._id, count);
   };
 
   useEffect(() => {
@@ -65,6 +66,20 @@ const useProducts = () => {
     setCart(newCart);
     removeFromDb(productId);
   };
+  const handleQuantity = (isIncreasing, product) => {
+    console.log(isIncreasing, product);
+    const select = document.getElementById(product.id);
+    let quantity = parseInt(select.value);
+    console.log(quantity);
+
+    if (isIncreasing) {
+      quantity = quantity + 1;
+    } else if (quantity > 1) {
+      quantity = quantity - 1;
+    }
+    setCount(quantity);
+    product.quantity = count;
+  };
   useEffect(() => {
     fetch('https://afternoon-gorge-26422.herokuapp.com/products')
       .then((res) => res.json())
@@ -88,6 +103,8 @@ const useProducts = () => {
     handleProduct,
     handleSearch,
     handleRemove,
+    handleQuantity,
+    count,
     pageCount,
     cartQuantity,
     setCartQuantity,
