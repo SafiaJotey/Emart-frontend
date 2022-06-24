@@ -1,6 +1,25 @@
+import { useState } from 'react';
+import { AiTwotoneStar } from 'react-icons/ai';
+import { FiStar } from 'react-icons/fi';
+import Rating from 'react-rating';
+
 const ReviewModal = (props) => {
   const { showModal, setShowModal } = props;
-
+  const [stars, setStars] = useState(0);
+  const [comment, setComment] = useState('');
+  const [success, setSuccess] = useState(false);
+  const handleRattings = (e) => {
+    setSuccess(false);
+    setStars(e);
+  };
+  const handleText = (e) => {
+    setComment(e.target.value);
+  };
+  const handleSubmit = () => {
+    console.log(stars);
+    console.log(comment);
+    setSuccess(true);
+  };
   return (
     <>
       {showModal ? (
@@ -12,16 +31,47 @@ const ReviewModal = (props) => {
             >
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none px-5">
-                {/*header*/}
+                {/*header*/}(
                 <div className="flex items-start justify-between py-2 px-5 border-b border-solid border-slate-200 rounded-t">
-                  <h3 className="text-2xl font-semibold">ADD A REVIEW</h3>
+                  <h3 className="text-2xl font-semibold text-secondary">
+                    ADD A REVIEW
+                  </h3>
                 </div>
-                {/*body*/}
+                ){/*body*/}
                 <div className=" py-2 px-5 w-full">
                   <div className="my-2">
-                    <h3 className="text-2xl font-bold text-secondary">
-                      Customer's Information:
-                    </h3>
+                    <p className="text-5xl text-reviewColor font-bold ">
+                      {' '}
+                      <Rating
+                        initialRating={0}
+                        emptySymbol={<FiStar />}
+                        fullSymbol={<AiTwotoneStar />}
+                        onChange={handleRattings}
+                      />
+                    </p>
+                    <br />
+                    <textarea
+                      className="p-2 text-lg border-2 border-secondary"
+                      placeholder="write a coment"
+                      rows={5}
+                      cols={30}
+                      onBlur={handleText}
+                    ></textarea>
+                    <br />
+                    {!success && (
+                      <button
+                        className="text-secondary text-lg"
+                        onClick={handleSubmit}
+                      >
+                        Submit
+                      </button>
+                    )}
+
+                    {success && (
+                      <p className="text-green-700 text-base">
+                        Review submitted. Thanks for the Review.
+                      </p>
+                    )}
                   </div>
                 </div>
                 {/*footer*/}

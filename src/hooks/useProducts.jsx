@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { addToDb, getStoreCart, removeFromDb } from '../utilities/fakedb';
 
 const useProducts = () => {
+  let countQuantity;
   const [products, setProducts] = useState([]);
   const [count, setCount] = useState(1);
   const [allProducts, setAllProducts] = useState([]);
@@ -18,11 +19,11 @@ const useProducts = () => {
     if (exist) {
       const rest = cart.filter((pd) => pd._id !== product._id);
 
-      exist.quantity = exist.quantity + count;
+      exist.quantity = exist.quantity + product.quantity;
 
       newCart = [...rest, exist];
     } else {
-      product.quantity = count;
+      product.quantity = 1;
       newCart = [...cart, product];
     }
 
@@ -69,16 +70,28 @@ const useProducts = () => {
   const handleQuantity = (isIncreasing, product) => {
     console.log(isIncreasing, product);
     const select = document.getElementById(product.id);
-    let quantity = parseInt(select.value);
-    console.log(quantity);
+
+    console.log(select);
+    countQuantity = parseInt(select.value);
+
+    console.log('quantity:', countQuantity);
 
     if (isIncreasing) {
-      quantity = quantity + 1;
-    } else if (quantity > 1) {
-      quantity = quantity - 1;
+      countQuantity = countQuantity + 1;
+      console.log('quantity AFTER increasing', countQuantity);
+      select.value = countQuantity;
+    } else if (!isIncreasing) {
+      if (countQuantity > 0) {
+        countQuantity = countQuantity - 1;
+        console.log('quantity AFTER decreasing', countQuantity);
+        select.value = countQuantity;
+      }
     }
-    setCount(quantity);
-    product.quantity = count;
+    // setCount(countQuantity);
+    // console.log('count', count);
+    product.quantity = countQuantity;
+
+    // console.log('product.quantity', product.quantity);
   };
   useEffect(() => {
     fetch('https://afternoon-gorge-26422.herokuapp.com/products')

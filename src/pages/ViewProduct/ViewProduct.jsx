@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { AiFillStar, AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
-import { useParams } from 'react-router-dom';
+import { AiFillStar } from 'react-icons/ai';
+import { Link, useParams } from 'react-router-dom';
 import useItem from '../../hooks/useItem';
 import ReviewModal from './ReviewModal';
 
@@ -49,41 +49,20 @@ const ViewProduct = () => {
           to colored accents and daring oversized midsoles, there are plenty of
           options to highlight your unique creativity with heritage inspiration.
         </p>
-        <p className="mt-2 text-reviewColor text-xl font-bold">
+        <p className="mt-2 text-reviewColor text-2xl font-bold">
           price: ${item.price}
         </p>
         <p>Stock available: {item.stock}</p>
         <div className="my-5">
-          <p className="font-xs text-secondary">select quantity</p>
-          <button
-            className="p-2 bg-bannerBg rounded-sm"
-            onClick={() => handleQuantity(true, item)}
-          >
-            <AiOutlinePlus />
-          </button>
-          <input
-            type="text"
-            className="w-1/12 p-2 text-center mx-2"
-            id={item.id}
-            min={1}
-            value={item.quantity}
-          />
-          <button
-            className="p-2 bg-bannerBg rounded-sm"
-            onClick={() => handleQuantity(false, item)}
-          >
-            <AiOutlineMinus />
-          </button>
           <div className="flex justify-between  items-center">
-            <button
-              className="px-5 py-2 rounded-lg bg-primary text-sm font-bold my-2 "
-              onClick={() => handleProduct(item)}
-            >
-              {' '}
-              <div className="flex justify-between text-white items-center">
-                <h5>Order Now</h5>
-              </div>
-            </button>
+            <Link to="/">
+              <button className="px-5 py-2 rounded-lg bg-primary text-sm font-bold my-2 ">
+                {' '}
+                <div className="flex justify-between text-white items-center">
+                  <h5>Order Now</h5>
+                </div>
+              </button>
+            </Link>
             <button
               onClick={() => setShowModal(true)}
               className="font-lg text-secondary"
@@ -93,6 +72,7 @@ const ViewProduct = () => {
             <ReviewModal
               showModal={showModal}
               setShowModal={setShowModal}
+              // item={item}
             ></ReviewModal>
           </div>
         </div>
