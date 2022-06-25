@@ -23,7 +23,7 @@ const useProducts = () => {
 
       newCart = [...rest, exist];
     } else {
-      product.quantity = 1;
+      product.quantity = countQuantity;
       newCart = [...cart, product];
     }
 
