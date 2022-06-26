@@ -4,22 +4,41 @@ import { FiStar } from 'react-icons/fi';
 import Rating from 'react-rating';
 
 const ReviewModal = (props) => {
+  const { _id } = props.item;
+
   const { showModal, setShowModal } = props;
   const [stars, setStars] = useState(0);
-  const [comment, setComment] = useState('');
+
   const [success, setSuccess] = useState(false);
   const handleRattings = (e) => {
     setSuccess(false);
+
     setStars(e);
   };
-  const handleText = (e) => {
-    setComment(e.target.value);
-  };
+
   const handleSubmit = () => {
+    const info = {
+      id: _id,
+      newReview: stars,
+    };
     console.log(stars);
-    console.log(comment);
+
+    fetch(
+      'https://afternoon-gorge-26422.herokuapp.com/products/updateinfo?productId',
+      {
+        method: 'PUT',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(info),
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+
     setSuccess(true);
   };
+
   return (
     <>
       {showModal ? (
@@ -31,16 +50,16 @@ const ReviewModal = (props) => {
             >
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none px-5">
-                {/*header*/}(
+                {/*header*/}
                 <div className="flex items-start justify-between py-2 px-5 border-b border-solid border-slate-200 rounded-t">
-                  <h3 className="text-2xl font-semibold text-secondary">
+                  <h3 className="text-xl md:text-2xl font-semibold text-secondary">
                     ADD A REVIEW
                   </h3>
                 </div>
-                ){/*body*/}
+                {/*body*/}
                 <div className=" py-2 px-5 w-full">
                   <div className="my-2">
-                    <p className="text-5xl text-reviewColor font-bold ">
+                    <p className="text-3xl md:text-5xl text-reviewColor font-bold ">
                       {' '}
                       <Rating
                         initialRating={0}
@@ -50,17 +69,11 @@ const ReviewModal = (props) => {
                       />
                     </p>
                     <br />
-                    <textarea
-                      className="p-2 text-lg border-2 border-secondary"
-                      placeholder="write a coment"
-                      rows={5}
-                      cols={30}
-                      onBlur={handleText}
-                    ></textarea>
+
                     <br />
                     {!success && (
                       <button
-                        className="text-secondary text-lg"
+                        className="text-secondary text-lg text-center"
                         onClick={handleSubmit}
                       >
                         Submit

@@ -4,8 +4,10 @@ const Banner = () => {
   return (
     <div className="flex flex-col justify-center items-center bg-bannerBg">
       <div className="">
-        <h1 className=" text-4xl py-5">
-          <span className="text-reviewColor font-bold text-6xl">Addidas, </span>{' '}
+        <h1 className=" px-2 text-center md:text-start text-xl md:text-4xl py-5">
+          <span className="text-reviewColor font-bold text-4xl md:text-6xl">
+            Addidas,{' '}
+          </span>{' '}
           It is more than just sales
         </h1>
       </div>

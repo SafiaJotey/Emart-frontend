@@ -19,7 +19,7 @@ const Payment = () => {
 
     const saveCart = getStoreCart();
     data.order = saveCart;
-    fetch('http://localhost:5000/order', {
+    fetch('https://afternoon-gorge-26422.herokuapp.com/order', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -34,16 +34,16 @@ const Payment = () => {
       });
   };
   return (
-    <div className="my-5">
+    <div className="my-5  md:px-16">
       <div className="flex flex-col md:flex-row  justify-center items-center ">
-        <div className=" w-full md:w-1/2">
-          <div className="w-full flex justify-center items-center px-5 md:p-0">
+        <div className=" w-full md:w-1/2 md:px-5">
+          <div className="w-full flex justify-center items-center md: px-5 md:p-0">
             <div className="w-full md:w-11/12  flex justify-center items-center  ">
               <form
-                className="w-full md:w-11/12  px-10 py-5 border-slate-200 border-2 my-2"
+                className="w-full md:w-11/12 px-2 md:px-10 py-5 border-slate-200 border-2 my-2"
                 onSubmit={handleSubmit(onSubmit)}
               >
-                <h2 className="my-5 text-secondary text-xl text-center">
+                <h2 className="my-2 text-secondary text-xl text-center">
                   Enter Your Information
                 </h2>
 
@@ -51,7 +51,7 @@ const Payment = () => {
                   <label className="p-2">Name</label>
                   <br />
                   <input
-                    className=" w-full border-slate-100   border-2 py-2  px-5 rounded-sm"
+                    className=" w-full border-slate-100   border-2 py-2  md:px-5 rounded-sm"
                     {...register('name', { required: true })}
                   />
 
@@ -108,7 +108,7 @@ const Payment = () => {
             </div>
           </div>
         </div>
-        <div className="w-1/2">
+        <div className="w-full md:w-1/2">
           <img src={payment} alt="" />
         </div>
       </div>

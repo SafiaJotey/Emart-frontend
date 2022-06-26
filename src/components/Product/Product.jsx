@@ -25,7 +25,7 @@ const Product = () => {
                   <img src={product.img} alt="product" />
                 </div>
                 <div className="details w-full md:w-2/3 text-justify md:text-left py-5 px-2 md:px-5">
-                  <h2 className="text-2xl text-primary font-bold">
+                  <h2 className="text-xl md:text-2xl text-primary font-bold">
                     {' '}
                     Product Name: {product.name}
                   </h2>
@@ -39,11 +39,11 @@ const Product = () => {
                   <h6 className="text-lg text-primary font-bold">
                     Price: $ {product.price}
                   </h6>
-                  <div className="flex justify-between items-center">
+                  <div className="flex  flex-col md:flex-row  items-start justify-start md:justify-between md:items-center">
                     <p className="text-sm text-secondary">
                       only {product.stock} left in stock
                     </p>
-                    <div className="flex justify-end items-center">
+                    <div className="flex flex-col md:flex-row justify-end items-center">
                       {' '}
                       <p className="text-md text-reviewColor font-bold ">
                         {' '}
