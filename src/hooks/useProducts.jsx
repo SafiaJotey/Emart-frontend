@@ -45,6 +45,7 @@ const useProducts = () => {
       setCart(storeCart);
     }
   }, [allProducts]);
+  console.log(page, size);
 
   useEffect(() => {
     fetch(
@@ -52,6 +53,7 @@ const useProducts = () => {
     )
       .then((res) => res.json())
       .then((data) => {
+        console.log(data.products);
         setProducts(data.products);
         setDisplayProducts(data.products);
 

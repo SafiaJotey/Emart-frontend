@@ -7,8 +7,7 @@ import useItem from '../../hooks/useItem';
 import Pagination from '../Pagination/Pagination';
 
 const Product = () => {
-  let selectedId;
-  const { handleProduct, displaProducts, handleQuantity, count } = useItem();
+  const { handleProduct, displaProducts, handleQuantity } = useItem();
 
   return (
     <div>
