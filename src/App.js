@@ -31,7 +31,14 @@ function App() {
                   </PrivateRoute>
                 }
               />
-              <Route path="view/:id" element={<ViewProduct />} />
+              <Route
+                path="view/:id"
+                element={
+                  <PrivateRoute>
+                    <ViewProduct />
+                  </PrivateRoute>
+                }
+              />
               <Route path="login" element={<Login />} />
               <Route path="register" element={<Register />} />
             </Routes>
