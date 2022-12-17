@@ -21,7 +21,7 @@ const ViewProduct = () => {
       id: id,
       comment: comment,
     };
-    fetch('https://afternoon-gorge-26422.herokuapp.com/comment', {
+    fetch('http://localhost:5000/comment', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -33,11 +33,10 @@ const ViewProduct = () => {
   };
 
   useEffect(() => {
-    fetch(`https://afternoon-gorge-26422.herokuapp.com/view/${id}`)
+    fetch(`http://localhost:5000/view/${id}`)
       .then((res) => res.json())
       .then((data) => setItem(data[0]));
   }, [id]);
-  console.log(item);
 
   return (
     <>

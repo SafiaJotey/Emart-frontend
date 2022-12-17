@@ -5,8 +5,6 @@ import CheckoutForm from './CheckoutForm';
 function PaymentModal(props) {
   const { showModal, setShowModal, data } = props;
 
-  console.log(data);
-
   const stripePromise = loadStripe(
     'pk_test_51Jy0LwBgFp1VWIUWHbxJnNCwiyBmGGn06StHxseA6ZvMlfKJBZrkSXT1TvXeUgBiTThCByH2mc2QPbQ8q2YTJPGr00CNflA4te'
   );

@@ -4,9 +4,11 @@ module.exports = {
     extend: {
       colors: {
         primary: 'black',
-        secondary: '#a66fa8',
+        secondary: '#006877',
         reviewColor: '#ffc108',
-        bannerBg: '#f5f2f5',
+        bannerBg: '#f2d6ef',
+        bgCircle: '#f2f2f2',
+        shape: 'rgba(224,247,251,.4)',
       },
     },
   },

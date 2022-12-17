@@ -45,15 +45,11 @@ const useProducts = () => {
       setCart(storeCart);
     }
   }, [allProducts]);
-  console.log(page, size);
 
   useEffect(() => {
-    fetch(
-      `https://afternoon-gorge-26422.herokuapp.com/products?page=${page}&&size=${size}`
-    )
+    fetch(`http://localhost:5000/products?page=${page}&&size=${size}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.products);
         setProducts(data.products);
         setDisplayProducts(data.products);
 
@@ -63,40 +59,31 @@ const useProducts = () => {
   }, [page]);
 
   const handleRemove = (productId) => {
-    console.log('cart', cart);
-    console.log('id', productId);
     const newCart = cart.filter((product) => product._id !== productId);
     setCart(newCart);
     removeFromDb(productId);
   };
   const handleQuantity = (isIncreasing, product) => {
-    console.log(isIncreasing, product);
     const select = document.getElementById(product.id);
 
-    console.log(select);
     countQuantity = parseInt(select.value);
-
-    console.log('quantity:', countQuantity);
 
     if (isIncreasing) {
       countQuantity = countQuantity + 1;
-      console.log('quantity AFTER increasing', countQuantity);
+
       select.value = countQuantity;
     } else if (!isIncreasing) {
       if (countQuantity > 0) {
         countQuantity = countQuantity - 1;
-        console.log('quantity AFTER decreasing', countQuantity);
+
         select.value = countQuantity;
       }
     }
-    // setCount(countQuantity);
-    // console.log('count', count);
-    product.quantity = countQuantity;
 
-    // console.log('product.quantity', product.quantity);
+    product.quantity = countQuantity;
   };
   useEffect(() => {
-    fetch('https://afternoon-gorge-26422.herokuapp.com/products')
+    fetch('http://localhost:5000/products')
       .then((res) => res.json())
       .then((data) => {
         setAllProducts(data.products);

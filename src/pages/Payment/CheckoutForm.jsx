@@ -15,7 +15,7 @@ const CheckoutForm = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch('https://afternoon-gorge-26422.herokuapp.com/create-payment-intent', {
+    fetch('http://localhost:5000/create-payment-intent', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -53,12 +53,10 @@ const CheckoutForm = () => {
     });
 
     if (error) {
-      console.log('[error]', error);
       setError(error);
       setSuccess('');
     } else {
       setError('');
-      console.log('[PaymentMethod]', paymentMethod);
     }
 
     //payment confirmation
@@ -77,7 +75,7 @@ const CheckoutForm = () => {
     } else {
       setError('');
       setSuccess('your payment processed successfully');
-      console.log(paymentIntent);
+
       setProcessing(false);
     }
   };

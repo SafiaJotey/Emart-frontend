@@ -3,13 +3,12 @@ import Comment from './Comment';
 
 const Comments = ({ id }) => {
   const [comments, setComments] = useState([]);
-  console.log(id);
+
   useEffect(() => {
-    fetch(`https://afternoon-gorge-26422.herokuapp.com/getComment/${id}`)
+    fetch(`http://localhost:5000/getComment/${id}`)
       .then((res) => res.json())
       .then((data) => setComments(data));
   }, [id]);
-  console.log(comments);
 
   return (
     <>

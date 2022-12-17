@@ -19,7 +19,7 @@ const Payment = () => {
 
     const saveCart = getStoreCart();
     data.order = saveCart;
-    fetch('https://afternoon-gorge-26422.herokuapp.com/order', {
+    fetch('http://localhost:5000/order', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -28,7 +28,6 @@ const Payment = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
         reset();
         // clearTheCart();
       });

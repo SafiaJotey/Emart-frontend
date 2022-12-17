@@ -1,0 +1,101 @@
+import React from 'react';
+import Logo from '../Logo/Logo';
+
+const Footer = () => {
+  return (
+    <div className="bg-shape">
+      <div className="flex justify-between items  text-xl md:text-lg center p-10 bg-secondary text-white">
+        <h6>Sign Up to Newsletter</h6>
+        <p className="text-bold">
+          Get all the latest information on Events, Sales and Offers.
+          <br />
+          Receive $10 coupon for first shopping.
+        </p>
+        <div>
+          <input
+            type="text"
+            placeholder="Enter Your Email"
+            className="py-3 px-12 border border-transparent  rounded-full rounded-r-lg"
+          />
+          <button className="py-3 px-5 border border-transparent bg-primary text-white  rounded-full rounded-l-lg">
+            Subscribe
+          </button>
+        </div>
+      </div>
+      <div className="flex justify-between items container mx-auto  py-16 border-b-2 border-shape- ">
+        <div className="w-4/12 p-4 text-sm text-justify">
+          <Logo />
+          <p>
+            EMART is best online shopping store in Bangladesh that features 10+
+            million products at affordable prices. As bangaldesh's online
+            shopping landscape is expanding every year, online shopping in
+            dhaka, chittagong, khulna, sylhet and other big cities are also
+            gaining momentum.
+          </p>
+        </div>
+        <div className="w-2/12 p-2">
+          <h5 className="text-xl text-bold my-4">Contact</h5>
+
+          <h6 className="text-md text-bold">Email:</h6>
+          <p className="mb-2">emart@gmail.com</p>
+          <h6 className="text-md text-bold">Contact:</h6>
+          <p className="mb-2">+88017000000</p>
+          <h6 className="text-md text-bold">Address:</h6>
+          <p className="mb-2">
+            House # 7/B, Flat # A-1, Road # 103 Gulshan-2,Dhaka-1212
+          </p>
+        </div>
+        <div className="w-2/12 p-2">
+          <h5 className="text-xl text-bold my-4">Account</h5>
+
+          <p className="mb-2">Ticket</p>
+
+          <p className="mb-2">Payment Methods</p>
+
+          <p className="mb-2">Shipping Guide</p>
+          <p className="mb-2">FAQs</p>
+
+          <p className="mb-2">Support</p>
+
+          <p className="mb-2">Policy</p>
+        </div>
+        <div className="w-2/12 p-2">
+          <h5 className="text-xl text-bold my-4"> About</h5>
+
+          <p className="mb-2">About</p>
+
+          <p className="mb-2">Terms And Conditions</p>
+
+          <p className="mb-2">Privacy policy</p>
+          <p className="mb-2">Return Policy</p>
+
+          <p className="mb-2">Categories</p>
+
+          <p className="mb-2">Shop</p>
+        </div>
+
+        <div className="w-2/12 p-2">
+          <h5 className="text-xl text-bold my-4"> Top Brands</h5>
+
+          <p className="mb-2">Daraz Bangladesh</p>
+
+          <p className="mb-2">Alibaba Online</p>
+
+          <p className="mb-2">Pikabo Bangladesh</p>
+          <p className="mb-2">Mena Bazar</p>
+
+          <p className="mb-2">Bongo Bazar</p>
+
+          <p className="mb-2">Ali-Express</p>
+        </div>
+      </div>
+      <div>
+        <p className="text-sm py-5 px-16">
+          EMART ©2022 || Design And Developed By Safia Ahmed
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default Footer;

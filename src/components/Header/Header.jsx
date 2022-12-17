@@ -1,11 +1,9 @@
-import { FaShoppingCart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
-import useItem from '../../hooks/useItem';
 
 const Header = () => {
   const { user, logOut } = useAuth();
-  const { handleSearch, cartQuantity } = useItem();
+
   return (
     <div className="sticky  top-0 z-10">
       <div className="flex flex-col   md:flex-row md:justify-between bg-black justify-center items-center ">
@@ -52,19 +50,6 @@ const Header = () => {
             <Link to="login"> Login</Link>
           </div>
         )}
-      </div>
-      <div className="bg-secondary flex justify-between items-center py-2 px-2 md:px-5 ">
-        <input
-          className="w-full md:w-3/5 p-2 rounded-sm "
-          type="text"
-          placeholder="Search by name"
-          onChange={handleSearch}
-        />
-
-        <div className="flex justify-center mx-1 ">
-          <FaShoppingCart className=" text-white text-2xl " />
-          <span className=" text-white text-sm  mx-1 ">{cartQuantity}</span>
-        </div>
       </div>
     </div>
   );

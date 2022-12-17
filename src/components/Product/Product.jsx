@@ -64,7 +64,7 @@ const Product = () => {
                   <div className="my-1">
                     <p className="font-xs text-secondary">select quantity</p>
                     <button
-                      className="p-2 bg-bannerBg rounded-sm"
+                      className="p-2 bg-shape rounded-sm"
                       onClick={() => handleQuantity(true, product)}
                     >
                       <AiOutlinePlus />
@@ -77,7 +77,7 @@ const Product = () => {
                       value="1"
                     />
                     <button
-                      className="p-2 bg-bannerBg rounded-sm"
+                      className="p-2 bg-shape rounded-sm"
                       onClick={() => handleQuantity(false, product)}
                     >
                       <AiOutlineMinus />

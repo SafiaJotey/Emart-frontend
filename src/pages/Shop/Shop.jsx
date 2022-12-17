@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Banner from '../../components/Banner/Banner';
 import Cart from '../../components/Cart/Cart';
+import Footer from '../../components/Footer/Footer';
 import Product from '../../components/Product/Product';
 import useItem from '../../hooks/useItem';
 
@@ -12,7 +13,7 @@ const Shop = () => {
       <Banner></Banner>
 
       <div className=" my-20 w-100  px-0 md:px-20">
-        <h2 className=" text-4xl font-bold  my-8 text-secondary flex  justify-center">
+        <h2 className=" text-4xl font-bold  my-8  text-secondary flex  justify-center">
           Our products
         </h2>
         <div className="flex flex-col-reverse  md:flex-row  md: justify-center    ">
@@ -20,7 +21,7 @@ const Shop = () => {
             <Product key={products.id}></Product>
           </div>
 
-          <div className="order-container w-full md:w-1/3 bg-bannerBg">
+          <div className="order-container w-full md:w-1/3 bg-shape">
             <Cart key={cart.id}>
               <Link to="order">
                 <button className="px-8 py-2 text-white  rounded-lg bg-primary text-sm font-bold my-4">
@@ -31,6 +32,7 @@ const Shop = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

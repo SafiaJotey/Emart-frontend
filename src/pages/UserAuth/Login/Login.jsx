@@ -88,7 +88,7 @@ const Login = () => {
           </button>
           <div className=" my-2">
             <hr className="w-full bg-secondary my-5 " />
-            New to Addidas?{' '}
+            New to EMART?{' '}
             <Link
               to="/register"
               className="  mx-2 text-primary font-bold underline decoration-primary "

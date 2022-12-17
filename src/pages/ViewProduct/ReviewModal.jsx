@@ -21,18 +21,14 @@ const ReviewModal = (props) => {
       id: _id,
       newReview: stars,
     };
-    console.log(stars);
 
-    fetch(
-      'https://afternoon-gorge-26422.herokuapp.com/products/updateinfo?productId',
-      {
-        method: 'PUT',
-        headers: {
-          'content-type': 'application/json',
-        },
-        body: JSON.stringify(info),
-      }
-    )
+    fetch('http://localhost:5000/products/updateinfo?productId', {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(info),
+    })
       .then((res) => res.json())
       .then((data) => console.log(data));
 
