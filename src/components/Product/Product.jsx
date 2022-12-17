@@ -20,28 +20,26 @@ const Product = () => {
           displaProducts.map((product) => (
             <>
               <div className="flex flex-col justify-center items-center  md:flex-row   p-1 border-b-2 border-b-secondary-200">
-                <div className="image w-full md:w-1/3 ">
+                <div className="image w-full md:w-3/12 ">
                   <img src={product.img} alt="product" />
                 </div>
                 <div className="details w-full md:w-2/3 text-justify md:text-left py-5 px-2 md:px-5">
-                  <h2 className="text-xl md:text-2xl text-primary font-bold">
+                  <h2 className="text-md md:text-lg text-primary font-bold">
                     {' '}
                     Product Name: {product.name}
                   </h2>
-                  <p className="text-lg font-bold">
+                  <p className="text-sm font-bold">
                     Category: {product.category}
                   </p>
-                  <small className="text-sm text-secondary">
+                  {/* <small className="text-sm text-secondary">
                     ID: {product.id}
                   </small>
-                  <p className="text-lg">By: {product.seller}</p>
-                  <h6 className="text-lg text-primary font-bold">
-                    Price: $ {product.price}
-                  </h6>
+                  <p className="text-lg">By: {product.seller}</p> */}
+
                   <div className="flex  flex-col md:flex-row  items-start justify-start md:justify-between md:items-center">
-                    <p className="text-sm text-secondary">
-                      only {product.stock} left in stock
-                    </p>
+                    <h6 className="text-lg text-primary font-bold">
+                      Price: $ {product.price}
+                    </h6>
                     <div className="flex flex-col md:flex-row justify-end items-center">
                       {' '}
                       <p className="text-md text-reviewColor font-bold ">

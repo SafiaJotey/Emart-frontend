@@ -10,21 +10,7 @@ const Banner = () => {
   return (
     <div className="flex   container mx-auto">
       {' '}
-      <div className="hidden md:block m-1 w-2/12">
-        <div className="bg-primary   text-white text-center py-3">
-          {' '}
-          Sort By Category
-        </div>
-        <div className="text-center py-3 shadow-sm ">Men's Sneaker</div>
-        <div className="text-center py-3 shadow-sm">Men's Pants</div>
-        <div className="text-center py-3 shadow-sm">Men's Boot</div>
-        <div className="text-center py-3 shadow-sm">Men's T-Shirt</div>
-        <div className="text-center py-3 shadow-sm">Bag</div>
-        <div className="text-center py-3 shadow-sm">Cap</div>
-        <div className="text-center py-3 shadow-sm">Earphones</div>
-        <div className="text-center py-3 shadow-sm">Bottle</div>
-      </div>
-      <div className="w-full md:w-10/12">
+      <div>
         <div className=" bg-secondary flex justify-between items-center py-2 px-2 md:px-5 ">
           <input
             className="w-full md:w-3/5 p-2 rounded-sm "

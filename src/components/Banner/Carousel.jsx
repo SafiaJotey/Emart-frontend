@@ -31,7 +31,7 @@ const Carousel = () => {
               {' '}
               <img src={banner2} className="p-4" alt="banner" />
             </div>
-            <div className="px-2  text-start">
+            <div className="px-12  text-start">
               <h1 className=" px-2 font-bold text-start md:text-start  text-2xl md:text-3xl py-2">
                 <span className="text-secondary"> Men's shoes</span> including{' '}
                 <br />
@@ -52,10 +52,6 @@ const Carousel = () => {
 
         <div class="carousel-item  relative float-left w-full ">
           <div className="w-full flex justify-between items-center    ">
-            <div className="bg-shape rounded-full w-[300px] h-[300px] my-2">
-              {' '}
-              <img src={banner4} className="p-4" alt="banner" />
-            </div>
             <div className="px-12  text-start">
               <h1 className=" px-2 font-bold text-start md:text-start  text-2xl md:text-3xl py-2">
                 <span className="text-secondary"> Shop the newest </span>styles{' '}
@@ -71,6 +67,10 @@ const Carousel = () => {
               <button className="px-8 py-3 text-white rounded-lg bg-primary text-sm font-bold  mx-2 my-4">
                 Shop Now
               </button>
+            </div>
+            <div className="bg-shape rounded-full w-[300px] h-[300px] my-2">
+              {' '}
+              <img src={banner4} className="p-4" alt="banner" />
             </div>
           </div>
         </div>
