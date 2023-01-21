@@ -1,5 +1,4 @@
 import React from 'react';
-import banner1 from '../../images/banner1.png';
 import banner2 from '../../images/banner2.png';
 import banner3 from '../../images/banner3 .png';
 import banner4 from '../../images/banner4.png';
@@ -7,11 +6,11 @@ const Carousel = () => {
   return (
     <div
       id="carouselExampleSlidesOnly"
-      class="carousel slide relative"
+      className="carousel slide relative"
       data-bs-ride="carousel"
     >
-      <div class="carousel-inner relative w-full overflow-hidden">
-        <div class="carousel-item active relative float-left w-full  ">
+      <div className="carousel-inner relative w-full overflow-hidden">
+        {/* <div className="carousel-item active relative float-left w-full container mx-auto  ">
           <div className=" h-[300px] ">
             {' '}
             <h1 className=" px-2 text-center md:text-start text-xl md:text-3xl ">
@@ -24,17 +23,17 @@ const Carousel = () => {
               <img src={banner1} className="px-4 py-2" alt="banner" />
             </div>
           </div>
-        </div>
-        <div class="carousel-item  relative float-left w-full ">
-          <div className="w-full flex justify-between items-start   ">
+        </div> */}
+        <div className="carousel-item active  relative float-left w-full ">
+          <div className="w-full flex justify-between items-center   ">
             <div className="bg-shape rounded-full w-[300px] h-[300px] my-2">
               {' '}
               <img src={banner2} className="p-4" alt="banner" />
             </div>
             <div className="px-12  text-start">
               <h1 className=" px-2 font-bold text-start md:text-start  text-2xl md:text-3xl py-2">
-                <span className="text-secondary"> Men's shoes</span> including{' '}
-                <br />
+                <span className="text-reviewColor text-4xl"> Men's shoes</span>{' '}
+                including <br />
                 casual sneakers
               </h1>
               <h3 className=" px-2 font-semibold text-start md:text-start text-xl md:text-2xl py-2">
@@ -50,12 +49,15 @@ const Carousel = () => {
           </div>
         </div>
 
-        <div class="carousel-item  relative float-left w-full ">
+        <div className="carousel-item  relative float-left w-full ">
           <div className="w-full flex justify-between items-center    ">
             <div className="px-12  text-start">
-              <h1 className=" px-2 font-bold text-start md:text-start  text-2xl md:text-3xl py-2">
-                <span className="text-secondary"> Shop the newest </span>styles{' '}
-                <br />
+              <h1 className=" font-bold text-start md:text-start  text-2xl md:text-3xl py-2">
+                <span className="text-reviewColor text-4xl">
+                  {' '}
+                  Shop the newest{' '}
+                </span>
+                styles <br />
                 before they're gone
               </h1>
               <h3 className=" px-2 font-semibold text-start md:text-start text-xl md:text-2xl py-2">
@@ -74,12 +76,12 @@ const Carousel = () => {
             </div>
           </div>
         </div>
-        <div class="carousel-item  relative float-left w-full ">
+        <div className="carousel-item  relative float-left w-full ">
           <div className="w-full flex justify-between items-center    ">
             <div className="px-12  text-start">
               <h1 className=" px-2 font-bold text-start md:text-start  text-2xl md:text-3xl py-2">
-                <span className="text-secondary"> Upgrade your runs</span> with{' '}
-                <br />
+                <span className="text-reviewColor text-4xl"> Upgrade runs</span>{' '}
+                with <br />
                 the EMART Ultraboost.
               </h1>
               <h3 className=" px-2 font-semibold text-start md:text-start text-xl md:text-2xl py-2">

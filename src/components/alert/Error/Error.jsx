@@ -1,11 +1,22 @@
-const Error = ({ children }) => {
+import { useNavigate } from 'react-router-dom';
+
+const Error = ({ setIsAlertVisible, alertVisible, message }) => {
+  const navigate = useNavigate();
+
+  setTimeout(() => {
+    setIsAlertVisible(false);
+  }, 5000);
   return (
-    <div
-      className="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4"
-      role="alert"
-    >
-      <p>{children}</p>
-    </div>
+    <>
+      {alertVisible ? (
+        <div
+          className="w-5/12 bg-yellow-100 border-l-4 border-reviewColor text-reviewColor p-4 shadow-lg"
+          role="alert"
+        >
+          <p>{message}</p>
+        </div>
+      ) : null}
+    </>
   );
 };
 

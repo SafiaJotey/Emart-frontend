@@ -17,7 +17,7 @@ const Product = () => {
             <p>No products found.</p>
           </div>
         ) : (
-          displaProducts.map((product) => (
+          displaProducts?.map((product) => (
             <>
               <div className="flex flex-col justify-center items-center  md:flex-row   p-1 border-b-2 border-b-secondary-200">
                 <div className="image w-full md:w-3/12 ">
@@ -93,7 +93,7 @@ const Product = () => {
                     </button>
                     <div>
                       <Link
-                        to={`/view/${product._id}`}
+                        to={`/product/${product._id}`}
                         className="text-secondary  font-bold "
                       >
                         View product{' '}

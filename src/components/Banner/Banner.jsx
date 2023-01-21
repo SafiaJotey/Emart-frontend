@@ -1,4 +1,5 @@
 import { FaShoppingCart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import useItem from '../../hooks/useItem';
 import banner1 from '../../images/banner1.png';
 import Popular from '../Popular/Popular';
@@ -37,7 +38,7 @@ const Banner = () => {
               <img src={banner1} className="px-4 py-2" alt="banner" />
             </div>
           </div>
-          <div className="hidden md:flex justify-center items-center bg-shape w-full md:w-9/12">
+          <div className="hidden md:flex justify-center items-center my-1 bg-secondary text-white w-full md:w-9/12">
             <Carousel />
           </div>
           <div className="  hidden md:block md:w-3/12 p-1 ">
@@ -46,10 +47,13 @@ const Banner = () => {
               <p className="text-reviewColor text-center text-sm ">
                 Get payment terms and much more
               </p>
-              <button className="px-24 py-2  bg-reviewColor rounded-2xl text-sm font-bold my-4">
+              <Link to="/comming">
                 {' '}
-                Upgrade
-              </button>
+                <button className="px-24 py-2  bg-reviewColor rounded-2xl text-sm font-bold my-4">
+                  {' '}
+                  Upgrade
+                </button>
+              </Link>
             </div>
             <button className="px-20 py-2  bg-reviewColor rounded-lg text-sm font-bold my-2">
               {' '}

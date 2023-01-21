@@ -10,7 +10,8 @@ const Order = () => {
         </div>
       ) : (
         cart.map((product) => (
-          <li className="py-2 w-full  shadow">
+          <li>
+            {' '}
             <div className="flex  flex-col md:flex-row md:items-center  px-2 ">
               <div className="m-1">
                 <img

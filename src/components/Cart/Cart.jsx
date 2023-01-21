@@ -21,19 +21,26 @@ const Cart = (props) => {
   setTotalPrice(grandTotal);
 
   return (
-    <div className="flex flex-col items-start p-5 md:sticky md:top-24 ">
-      <h3 className="text-2xl font-bold">Order Summery:</h3>
-      <h5> Total Items: {totalQuantity}</h5>
-      <h5>Product Price: {total.toFixed(2)}</h5>
+    <div className="flex flex-col items-start p-5 md:sticky md:top-16">
+      <h3 className="text-2xl font-bold text-secondary underline underline-offset-8">
+        Order Summery:
+      </h3>
+      <div className="my-4">
+        <h5 className="font-bold"> Total Items: {totalQuantity}</h5>
+        <h5 className="font-bold">Product Price: {total.toFixed(2)}</h5>
 
-      <h5>Items list: </h5>
-      {cart.map((item) => (
-        <Items item={item} handleRemove={handleRemove} />
-      ))}
-      <h5>Shipping Charge: $ {shippingCharge}</h5>
-      <h5> Tax : $ {tax.toFixed(2)}</h5>
-      <h5> Total Amount: $ {grandTotal.toFixed(2)}</h5>
-      {props.children}
+        <h5 className="font-bold">Items list: </h5>
+        {cart.map((item) => (
+          <Items item={item} handleRemove={handleRemove} />
+        ))}
+        <h5 className="font-bold">Shipping Charge: $ {shippingCharge}</h5>
+        <h5 className="font-bold mb-4"> Tax : $ {tax.toFixed(2)}</h5>
+        <h5 className="font-bold overline overline-offset-8 text-secondary">
+          {' '}
+          Total Amount: $ {grandTotal.toFixed(2)}
+        </h5>
+        {props.children}
+      </div>
     </div>
   );
 };

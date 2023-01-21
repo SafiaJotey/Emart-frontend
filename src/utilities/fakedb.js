@@ -20,6 +20,11 @@ const addToDb = (id, count) => {
 };
 const getStoreCart = () => {
   const exist = localStorage.getItem('shopping-cart');
+  // if (exist) {
+  //   console.log(true);
+  // } else {
+  //   console.log(false);
+  // }
   return exist ? JSON.parse(exist) : {};
 };
 

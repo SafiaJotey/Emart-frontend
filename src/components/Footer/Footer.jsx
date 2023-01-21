@@ -4,7 +4,7 @@ import Logo from '../Logo/Logo';
 const Footer = () => {
   return (
     <div className="bg-shape">
-      <div className="flex flex-col md:flex-row justify-between items  text-lg md:text-lg center p-10 bg-secondary text-white">
+      <div className="flex flex-col md:flex-row justify-between items  text-md center px-10 py-8 bg-secondary text-white">
         <h6 className="w-full md:w-3/12 text-start my-2 md:my-0">
           Sign Up to Newsletter
         </h6>
@@ -24,8 +24,8 @@ const Footer = () => {
           </button>
         </div>
       </div>
-      <div className="flex flex-wrap flex-row justify-between items-center container mx-auto  py-16 border-b-2 border-shape- ">
-        <div className="w-full md:w-4/12 p-4 text-sm text-center md:text-justify">
+      <div className="flex flex-wrap flex-row justify-between items-center container mx-auto  py-10 border-b-2 border-shape- ">
+        <div className="w-full md:w-4/12 p-4  text-center md:text-justify">
           <Logo />
           <p>
             EMART is best online shopping store in Bangladesh that features 10+
@@ -35,7 +35,7 @@ const Footer = () => {
             gaining momentum.
           </p>
         </div>
-        <div className="w-6/12  md:w-2/12 p-2">
+        <div className="w-6/12 text-sm md:w-2/12 p-2">
           <h5 className="text-xl text-bold my-4">Contact</h5>
 
           <h6 className="text-md text-bold">Email:</h6>
@@ -47,7 +47,7 @@ const Footer = () => {
             House # 7/B, Flat # A-1, Road # 103 Gulshan-2,Dhaka-1212
           </p>
         </div>
-        <div className="w-6/12  md:w-2/12 p-2">
+        <div className="w-6/12 text-sm md:w-2/12 p-2">
           <h5 className="text-xl text-bold my-4">Account</h5>
 
           <p className="mb-2">Ticket</p>
@@ -61,7 +61,7 @@ const Footer = () => {
 
           <p className="mb-2">Policy</p>
         </div>
-        <div className="w-6/12 md:w-2/12 p-2">
+        <div className="w-6/12 text-sm md:w-2/12 p-2">
           <h5 className="text-xl text-bold my-4"> About</h5>
 
           <p className="mb-2">About</p>

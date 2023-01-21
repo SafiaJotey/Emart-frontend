@@ -4,6 +4,8 @@ import Logo from './components/Logo/Logo.jsx';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx';
 import AuthProvider from './context/AuthProvider.jsx';
 import ProductProvider from './context/ProductProvider.jsx';
+import CommingSoon from './pages/CommingSoon/CommingSoon.jsx';
+import NotFound from './pages/NotFound/NotFound.jsx';
 import OrderReview from './pages/OrderReview/OrderReview';
 import Payment from './pages/Payment/Payment.jsx';
 import Shop from './pages/Shop/Shop';
@@ -32,7 +34,7 @@ function App() {
                 }
               />
               <Route
-                path="view/:id"
+                path="product/:id"
                 element={
                   <PrivateRoute>
                     <ViewProduct />
@@ -41,6 +43,9 @@ function App() {
               />
               <Route path="login" element={<Login />} />
               <Route path="register" element={<Register />} />
+              <Route path="comming" element={<CommingSoon />} />
+
+              <Route path="*" element={<NotFound />}></Route>
             </Routes>
           </BrowserRouter>
         </ProductProvider>

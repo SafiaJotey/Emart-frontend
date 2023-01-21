@@ -1,47 +1,45 @@
 import { useEffect, useState } from 'react';
 import { AiFillStar } from 'react-icons/ai';
 import { Link, useParams } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
 import Comments from './Comments';
+// import Comments from './Comments';
 import ReviewModal from './ReviewModal';
 
 const ViewProduct = () => {
-  const { user } = useAuth();
-  const [comment, setComment] = useState('');
   const [item, setItem] = useState([]);
   const { id } = useParams();
 
   const [showModal, setShowModal] = useState(false);
-  const handleText = (e) => {
-    setComment(e.target.value);
-  };
-  const handleSubmit = () => {
-    const commentInfo = {
-      userEmail: user.email,
-      id: id,
-      comment: comment,
-    };
-    fetch('http://localhost:5000/comment', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(commentInfo),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  };
+  // const handleText = (e) => {
+  //   setComment(e.target.value);
+  // };
+  // const handleSubmit = () => {
+  //   const commentInfo = {
+  //     userEmail: user.email,
+  //     id: id,
+  //     comment: comment,
+  //   };
+  // fetch('http://localhost:5000/comment', {
+  //   method: 'POST',
+  //   headers: {
+  //     'content-type': 'application/json',
+  //   },
+  //   body: JSON.stringify(commentInfo),
+  // })
+  //   .then((res) => res.json())
+  //   .then((data) => console.log(data));
+  // };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/view/${id}`)
+    fetch(`http://localhost:5000/api/v1/product/${id}`)
       .then((res) => res.json())
-      .then((data) => setItem(data[0]));
-  }, [id]);
+      .then((data) => setItem(data.data[0]));
+  }, [id, item]);
 
   return (
-    <>
+    <div className="container mx-auto my-5">
       <div className="flex flex-col md:flex-row justify-center ">
-        <div className="w-full md:w-2/5">
+        <div className="w-full md:w-2/5 shadow-sm">
           <img src={item.img} alt="" />
         </div>
 
@@ -100,29 +98,11 @@ const ViewProduct = () => {
           </div>
         </div>
       </div>
-      <h2 className=" mt-16 px-2 md:px-8 text-base md:text-2xl font-bold ">
-        Write about {item.name}
-      </h2>
-      <div className="px-2 md:px-8 mt-2 flex flex-col md:flex-row justify-start md:items-end">
-        <textarea
-          className="p-2 text-lg border-2 "
-          placeholder="write a coment"
-          onBlur={handleText}
-        ></textarea>
-        <button
-          className="px-5 py-2 m-2 rounded-sm bg-primary text-sm font-bold my-2 "
-          onClick={handleSubmit}
-        >
-          {' '}
-          <div className=" text-white ">
-            <h5>Done</h5>
-          </div>
-        </button>
-      </div>
+
       <div>
         <Comments id={id}></Comments>
       </div>
-    </>
+    </div>
   );
 };
 

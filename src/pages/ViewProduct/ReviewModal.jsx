@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { AiTwotoneStar } from 'react-icons/ai';
 import { FiStar } from 'react-icons/fi';
 import Rating from 'react-rating';
+import useAuth from '../../hooks/useAuth';
 
 const ReviewModal = (props) => {
+  const { user } = useAuth();
   const { _id } = props.item;
-
+  const [comment, setComment] = useState('');
   const { showModal, setShowModal } = props;
   const [stars, setStars] = useState(0);
 
@@ -16,14 +18,27 @@ const ReviewModal = (props) => {
     setStars(e);
   };
 
+  const handleText = (e) => {
+    setComment(e.target.value);
+  };
+  // const handleSubmit = () => {
+  //   const commentInfo = {
+  //     userEmail: user.email,
+  //     id: id,
+  //     comment: comment,
+  //   };
+
   const handleSubmit = () => {
     const info = {
       id: _id,
+      name: user.displayName,
+      userEmail: user.email,
       newReview: stars,
+      comment: comment,
     };
 
-    fetch('http://localhost:5000/products/updateinfo?productId', {
-      method: 'PUT',
+    fetch('http://localhost:5000/api/v1/review/updateReview', {
+      method: 'POST',
       headers: {
         'content-type': 'application/json',
       },
@@ -58,18 +73,36 @@ const ReviewModal = (props) => {
                     <p className="text-3xl md:text-5xl text-reviewColor font-bold ">
                       {' '}
                       <Rating
-                        initialRating={0}
+                        initialRating={stars}
                         emptySymbol={<FiStar />}
                         fullSymbol={<AiTwotoneStar />}
                         onChange={handleRattings}
                       />
+                      <h2 className=" mt-2  px-2 text-xl font-bold ">
+                        Leave a comment
+                      </h2>
+                      <div className="px-2  mt-2 flex flex-col md:flex-row justify-start md:items-end">
+                        <textarea
+                          className="p-2 text-lg border-2 "
+                          placeholder="write a coment"
+                          onBlur={handleText}
+                        ></textarea>
+                        {/* <button
+                          className="px-5 py-2 m-2 rounded-sm bg-primary text-sm font-bold my-2 "
+                          onClick={handleSubmit}
+                        >
+                          {' '} */}
+                        {/* <div className=" text-white ">
+                            <h5>Done</h5>
+                          </div> */}
+                        {/* </button> */}
+                      </div>
                     </p>
                     <br />
 
-                    <br />
                     {!success && (
                       <button
-                        className="text-secondary text-lg text-center"
+                        className="px-5 py-2  rounded-sm bg-primary text-sm font-bold   text-white"
                         onClick={handleSubmit}
                       >
                         Submit

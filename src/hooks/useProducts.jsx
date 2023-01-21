@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import { addToDb, getStoreCart, removeFromDb } from '../utilities/fakedb';
 
 const useProducts = () => {
-  let countQuantity;
+  let countQuantity = 0;
   const [products, setProducts] = useState([]);
-  const [count, setCount] = useState(1);
+
+  const [category, setCategory] = useState('');
   const [allProducts, setAllProducts] = useState([]);
   const [cartQuantity, setCartQuantity] = useState(0);
   const [cart, setCart] = useState([]);
@@ -12,14 +13,20 @@ const useProducts = () => {
   const [displaProducts, setDisplayProducts] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(0);
-  const size = 8;
-  const handleProduct = (product) => {
-    const exist = cart.find((pd) => pd._id === product._id);
+  const [productByCategory, setProductByCategory] = useState([]);
+
+  const handleProduct = (product, count) => {
+    const select = document.getElementById(product.id);
+
+    countQuantity = parseInt(select.value);
+    console.log(countQuantity);
+    const exist = cart?.find((pd) => pd._id === product._id);
+
     let newCart = [];
     if (exist) {
       const rest = cart.filter((pd) => pd._id !== product._id);
 
-      exist.quantity = exist.quantity + product.quantity;
+      exist.quantity = exist.quantity + countQuantity;
 
       newCart = [...rest, exist];
     } else {
@@ -28,7 +35,7 @@ const useProducts = () => {
     }
 
     setCart(newCart);
-    addToDb(product._id, count);
+    addToDb(product._id, countQuantity);
   };
 
   useEffect(() => {
@@ -47,13 +54,13 @@ const useProducts = () => {
   }, [allProducts]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products?page=${page}&&size=${size}`)
+    fetch(`http://localhost:5000/api/v1/product/getProduct?page=${page}`)
       .then((res) => res.json())
       .then((data) => {
-        setProducts(data.products);
-        setDisplayProducts(data.products);
+        setProducts(data.data.product);
+        setDisplayProducts(data.data.product);
 
-        const pageNummber = Math.ceil(data.count / 8);
+        const pageNummber = Math.ceil(data.data.total / 8);
         setPageCount(pageNummber);
       });
   }, [page]);
@@ -72,23 +79,27 @@ const useProducts = () => {
       countQuantity = countQuantity + 1;
 
       select.value = countQuantity;
+      // setCount(countQuantity);
     } else if (!isIncreasing) {
-      if (countQuantity > 0) {
+      if (countQuantity > 1) {
         countQuantity = countQuantity - 1;
 
         select.value = countQuantity;
       }
     }
-
+    // setCount(select.value);
     product.quantity = countQuantity;
+    select.value = countQuantity;
   };
+
   useEffect(() => {
-    fetch('http://localhost:5000/products')
+    fetch('http://localhost:5000/api/v1/product/getProduct')
       .then((res) => res.json())
       .then((data) => {
-        setAllProducts(data.products);
+        setProductByCategory(data.data.product);
+        setAllProducts(data.data.product);
       });
-  }, []);
+  }, [category]);
   const handleSearch = (e) => {
     const searchText = e.target.value;
     const matchedProduct = allProducts.filter((product) =>
@@ -97,6 +108,7 @@ const useProducts = () => {
 
     setDisplayProducts(matchedProduct);
   };
+
   return {
     products,
     cart,
@@ -106,7 +118,8 @@ const useProducts = () => {
     handleSearch,
     handleRemove,
     handleQuantity,
-    count,
+    productByCategory,
+
     pageCount,
     cartQuantity,
     setCartQuantity,
@@ -114,6 +127,8 @@ const useProducts = () => {
     setTotalPrice,
     page,
     setPage,
+    category,
+    setCategory,
   };
 };
 

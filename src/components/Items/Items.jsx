@@ -1,6 +1,6 @@
 const Items = (props) => {
   return (
-    <div className="flex justify-between items-center ">
+    <div className="flex justify-between items-center  ">
       <h5 className="mr-3 ">
         {props.item.category}{' '}
         <span>

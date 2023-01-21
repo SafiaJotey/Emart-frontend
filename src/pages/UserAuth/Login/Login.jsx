@@ -1,15 +1,20 @@
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Error from '../../../components/alert/Error/Error';
-import Success from '../../../components/alert/Success/Success';
 import Spinner from '../../../components/Spinner/Spinner';
 import useAuth from '../../../hooks/useAuth';
 
 const Login = () => {
+  const { setUser } = useAuth();
+  const [alertVisible, setIsAlertVisible] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const { user, signinWithGoogle, signIn, loading, successAlert, errorAlert } =
-    useAuth();
+
+  const [data, setData] = useState({});
+  const [successAlert, setSuccessAlert] = useState('');
+  const [errorAlert, setErrorAlert] = useState('');
+
+  const { signinWithEmail, signinWithGoogle, loading } = useAuth();
 
   const {
     register,
@@ -17,12 +22,69 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    signIn(data, location, navigate);
+    signinWithEmail(data, location, navigate);
+    // signIn(data, location, navigate);
+    setData(data);
   };
+  useEffect(() => {
+    fetch('http://localhost:5000/api/v1/auth/login', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        // reset();
+        console.log(result);
+
+        if (result.data) {
+          localStorage.setItem('token', JSON.stringify(result?.data?.token));
+
+          //   localStorage.setItem('token', JSON.stringify(result.data.token));
+          //   setUserTrue(result.data.others);
+          //   setIsAlertVisible('true');
+          //   setSuccessAlert(result.message);
+          //   setErrorAlert('');
+          //   navigate(redirect_uri);
+          // } else {
+          //   setIsAlertVisible('true');
+          //   setErrorAlert(result.message);
+          // }
+          // // clearTheCart();
+          // if (result.status === 'success') {
+          //   setSuccessAlert(' Suceessfully registered');
+          // } else {
+          //   if (result.status === 'fail') {
+          //     setErrorAlert('User is Alreary created with this Email');
+          //   }
+        }
+      });
+  }, [data]);
+
   return (
     <div className="flex flex-col justify-center items-center my-8">
-      {successAlert && <Success>{successAlert}</Success>}
-      {errorAlert && <Error>{errorAlert}</Error>}
+      {/* {successAlert ? (
+        <Success
+          from="login"
+          message={successAlert}
+          setIsAlertVisible={setIsAlertVisible}
+          alertVisible={alertVisible}
+        ></Success>
+      ) : (
+        // from="login"
+        // redirect_uri={redirect_uri}
+        // message={successAlert}
+        // setIsAlertVisible={setIsAlertVisible}
+        // alertVisible={alertVisible}
+
+        <Error
+          setIsAlertVisible={setIsAlertVisible}
+          alertVisible={alertVisible}
+          message={errorAlert}
+        ></Error>
+      )} */}
       <h3 className="text-2xl"> Sign-In</h3>
       <div className="flex justify-center items-center">
         <div className="flex justify-center items-center p-5 border-slate-200 border-2 my-2">

@@ -30,7 +30,7 @@ const Header = () => {
         </li> */}
         </ul>
 
-        {user.email ? (
+        {user?.email ? (
           <div className="text-center">
             <div className="text-center md:inline-block">
               <span className="text-reviewColor mx-5">
