@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import useAuth from '../../hooks/useAuth';
 import payment from '../../images/payment.png';
 import { getStoreCart } from '../../utilities/fakedb';
 import PaymentModal from './PaymentModal';
 const Payment = () => {
   const [data, setData] = useState('');
   const [showModal, setShowModal] = useState(false);
+  const { user } = useAuth();
 
   const {
     register,
@@ -19,18 +21,18 @@ const Payment = () => {
 
     const saveCart = getStoreCart();
     data.order = saveCart;
-    fetch('http://localhost:5000/order', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        reset();
-        // clearTheCart();
-      });
+    // fetch('https://emart-98vu.onrender.com/api/v1/order/placeOrder', {
+    //   method: 'POST',
+    //   headers: {
+    //     'content-type': 'application/json',
+    //   },
+    //   body: JSON.stringify(data),
+    // })
+    //   .then((res) => res.json())
+    //   .then((result) => {
+    //     reset();
+    //     // clearTheCart();
+    //   });
   };
   return (
     <div className="my-5  md:px-16">
@@ -51,7 +53,9 @@ const Payment = () => {
                   <br />
                   <input
                     className=" w-full border-slate-100   border-2 py-2  md:px-5 rounded-sm"
+                    defaultValue={user?.displayName}
                     {...register('name', { required: true })}
+                    readOnly
                   />
 
                   {errors.name?.type === 'required' && 'name is required'}
@@ -64,6 +68,8 @@ const Payment = () => {
                     type="email"
                     className=" w-full border-slate-100   border-2 py-2  px-5 rounded-sm"
                     {...register('email', { required: true })}
+                    defaultValue={user?.email}
+                    readOnly
                   />
 
                   {errors.email?.type === 'required' &&
@@ -78,7 +84,12 @@ const Payment = () => {
                     {...register('address', { required: true })}
                   />
 
-                  {errors.address?.type === 'required' && 'address is required'}
+                  {errors.address?.type === 'required' && (
+                    <small className="text-danger">
+                      {' '}
+                      'address is required'
+                    </small>
+                  )}
                 </div>
                 <div className="py-2">
                   <label className="p-2">Mobile</label>
@@ -88,7 +99,11 @@ const Payment = () => {
                     {...register('mobile', { required: true })}
                   />
 
-                  {errors.mobile?.type === 'required' && 'Number is required'}
+                  {errors.mobile?.type === 'required' && (
+                    <small className="text-danger">
+                      'Mobile Number is required'
+                    </small>
+                  )}
                 </div>
 
                 <div className="py-2">

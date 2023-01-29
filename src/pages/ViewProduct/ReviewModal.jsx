@@ -37,7 +37,7 @@ const ReviewModal = (props) => {
       comment: comment,
     };
 
-    fetch('http://localhost:5000/api/v1/review/updateReview', {
+    fetch('https://emart-98vu.onrender.com/api/v1/review/updateReview', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

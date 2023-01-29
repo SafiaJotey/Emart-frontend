@@ -3,8 +3,11 @@ import { useEffect, useState } from 'react';
 import Spinner from '../../components/Spinner/Spinner';
 import useAuth from '../../hooks/useAuth';
 import useItem from '../../hooks/useItem';
+import { clearTheCart } from '../../utilities/fakedb';
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ data }) => {
+  console.log(data);
+
   const stripe = useStripe();
   const elements = useElements();
   const [error, setError] = useState('');
@@ -15,20 +18,23 @@ const CheckoutForm = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch('http://localhost:5000/create-payment-intent', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(totalPrice),
-    })
+    fetch(
+      'https://emart-98vu.onrender.com/api/v1/payment/create-payment-intent',
+      {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(totalPrice),
+      }
+    )
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
   }, [totalPrice]);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (e) => {
     // Block native form submission.
-    event.preventDefault();
+    e.preventDefault();
 
     if (!stripe || !elements) {
       // Stripe.js has not loaded yet. Make sure to disable
@@ -53,10 +59,11 @@ const CheckoutForm = () => {
     });
 
     if (error) {
-      setError(error);
+      setError(error.message);
       setSuccess('');
     } else {
       setError('');
+      console.log('[PaymentMethod]', paymentMethod);
     }
 
     //payment confirmation
@@ -65,6 +72,7 @@ const CheckoutForm = () => {
         payment_method: {
           card: card,
           billing_details: {
+            name: user.name,
             email: user.email,
           },
         },
@@ -73,7 +81,30 @@ const CheckoutForm = () => {
       setError(intentError.message);
       setSuccess('');
     } else {
-      setError('');
+      setError(' ');
+      console.log(paymentIntent);
+      setSuccess('Your payment processed successfully');
+      setProcessing(false);
+      //save to database
+      const payment = {
+        amount: paymentIntent.amount,
+        created: paymentIntent.created,
+        last4: paymentMethod.card.last4,
+        clientSecret: paymentIntent.client_secret.slice('_secret')[0],
+      };
+      data.payment = payment;
+
+      fetch('https://emart-98vu.onrender.com/api/v1/order/placeOrder', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          clearTheCart();
+        });
       setSuccess('your payment processed successfully');
 
       setProcessing(false);

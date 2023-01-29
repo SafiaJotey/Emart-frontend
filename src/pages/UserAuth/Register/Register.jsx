@@ -1,17 +1,19 @@
-import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Spinner from '../../../components/Spinner/Spinner';
 import useAuth from '../../../hooks/useAuth';
 const Register = () => {
-  const [data, setData] = useState('');
+  // const [data, setData] = useState('');
+  const navigate = useNavigate();
+  const location = useLocation();
 
   // }
-  const [alertVisible, setIsAlertVisible] = useState(false);
-  const [successAlert, setSuccessAlert] = useState('');
-  const [errorAlert, setErrorAlert] = useState('');
+  // const { alertVisible } = useAuth();
+  // const [successAlert, setSuccessAlert] = useState('');
+  // const [errorAlert, setErrorAlert] = useState('');
 
   const { signUp, loading } = useAuth();
+  const destination = location?.state?.from || '/';
 
   const {
     register,
@@ -20,49 +22,35 @@ const Register = () => {
   } = useForm();
   const onSubmit = (data) => {
     data.role = 'buyer';
-    setData(data);
+    // setData(data);
 
-    signUp(data);
+    signUp(data, navigate, destination);
   };
-  useEffect(() => {
-    fetch('http://localhost:5000/api/v1/auth/signup', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        // reset();
-        // // clearTheCart();
-        // if (result.status === 'success') {
-        //   setIsAlertVisible(true);
-        //   setSuccessAlert(' Suceessfully registered');
-        //   setErrorAlert('');
-        // } else {
-        //   setIsAlertVisible(true);
-        //   setErrorAlert('User is Alreary created with this Email');
-      });
-  }, [data]);
+  // useEffect(() => {
+  //   fetch('https://emart-98vu.onrender.com/api/v1/auth/signup', {
+  //     method: 'POST',
+  //     headers: {
+  //       'content-type': 'application/json',
+  //     },
+  //     body: JSON.stringify(data),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((result) => {
+  //       alertVisible(true);
+  //       console.log(result);
+  //       // reset();
+  //       // // clearTheCart();
+  //       // if (result.status === 'success') {
+  //       //   setIsAlertVisible(true);
+  //       //   setSuccessAlert(' Suceessfully registered');
+  //       //   setErrorAlert('');
+  //       // } else {
+  //       //   setIsAlertVisible(true);
+  //       //   setErrorAlert('User is Alreary created with this Email');
+  //     });
+  // }, [data]);
   return (
     <div className="flex flex-col justify-center items-center my-8">
-      {/* {successAlert && (
-        <Success
-          from="register"
-          message={successAlert}
-          redirect_uri="/login"
-          setIsAlertVisible={setIsAlertVisible}
-          alertVisible={alertVisible}
-        ></Success>
-      )}
-      {errorAlert && (
-        <Error
-          message={errorAlert}
-          setIsAlertVisible={setIsAlertVisible}
-          alertVisible={alertVisible}
-        ></Error>
-      )} */}
       <h3 className="text-2xl"> Sign-Up</h3>
       <div className="w-full flex justify-center items-center px-5 md:p-0">
         <div className="w-full md:w-3/5 flex justify-center items-center  ">

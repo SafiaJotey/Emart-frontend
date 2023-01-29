@@ -17,7 +17,7 @@ const CategoryProducts = () => {
   );
 
   return (
-    <div className="w-full md:w-10/12 ">
+    <div className="w-full md:w-10/12 hidden md:block">
       {' '}
       <div className="  w-100  px-0 md:px-4 ">
         <h2 className="my-1 text-4xl font-bold bg-black text-white p-2 text-center ">

@@ -42,7 +42,7 @@ const Product = () => {
                     </h6>
                     <div className="flex flex-col md:flex-row justify-end items-center">
                       {' '}
-                      <p className="text-md text-reviewColor font-bold ">
+                      <p className="text-md text-reviewColor font-bold  ">
                         {' '}
                         <Rating
                           initialRating={product.ratings}

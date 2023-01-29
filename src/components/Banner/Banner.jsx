@@ -5,8 +5,7 @@ import banner1 from '../../images/banner1.png';
 import Popular from '../Popular/Popular';
 import Carousel from './Carousel';
 const Banner = () => {
-  const { handleSearch, cartQuantity, products } = useItem();
-  const popularProducts = products.slice(0, 3);
+  const { handleSearch, cartQuantity } = useItem();
 
   return (
     <div className="flex   container mx-auto">
@@ -19,11 +18,12 @@ const Banner = () => {
             placeholder="Search by name"
             onChange={handleSearch}
           />
-
-          <div className="flex justify-center mx-1 ">
-            <FaShoppingCart className=" text-white text-2xl " />
-            <span className=" text-white text-sm  mx-1 ">{cartQuantity}</span>
-          </div>
+          <Link to="/order">
+            <div className="flex justify-center mx-1 ">
+              <FaShoppingCart className=" text-white text-2xl " />
+              <span className=" text-white text-sm  mx-1 ">{cartQuantity}</span>
+            </div>{' '}
+          </Link>
         </div>
         <div className="flex justify-center text-center">
           <div className="  bg-shape py-5 md:hidden">
@@ -49,20 +49,21 @@ const Banner = () => {
               </p>
               <Link to="/comming">
                 {' '}
-                <button className="px-24 py-2  bg-reviewColor rounded-2xl text-sm font-bold my-4">
+                <button className="xl:px-24 py-2  bg-reviewColor lg:rounded-2xl text-xm px-10 lg:text-sm font-bold my-4">
                   {' '}
                   Upgrade
                 </button>
               </Link>
             </div>
-            <button className="px-20 py-2  bg-reviewColor rounded-lg text-sm font-bold my-2">
+            <Link to="/popular">
               {' '}
-              Most Popular
-            </button>
+              <button className="xl:px-20 py-2  bg-reviewColor rounded-lg text-xm  px-12 lg:text-sm lg:font-bold my-2">
+                {' '}
+                Most Popular
+              </button>
+            </Link>
             <div>
-              {popularProducts.map((product) => (
-                <Popular key={product._id} product={product} />
-              ))}
+              <Popular />
             </div>
           </div>
         </div>

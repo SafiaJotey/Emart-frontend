@@ -14,6 +14,12 @@ const useProducts = () => {
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(0);
   const [productByCategory, setProductByCategory] = useState([]);
+  const [mostDemanding, setMostDemanding] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:5000/api/v1/product/getPopularProduct')
+      .then((res) => res.json())
+      .then((data) => setMostDemanding(data.data));
+  }, []);
 
   const handleProduct = (product, count) => {
     const select = document.getElementById(product.id);
@@ -54,7 +60,9 @@ const useProducts = () => {
   }, [allProducts]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/product/getProduct?page=${page}`)
+    fetch(
+      `https://emart-98vu.onrender.com/api/v1/product/getProduct?page=${page}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setProducts(data.data.product);
@@ -93,7 +101,7 @@ const useProducts = () => {
   };
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/v1/product/getProduct')
+    fetch('https://emart-98vu.onrender.com/api/v1/product/getProduct')
       .then((res) => res.json())
       .then((data) => {
         setProductByCategory(data.data.product);
@@ -119,7 +127,7 @@ const useProducts = () => {
     handleRemove,
     handleQuantity,
     productByCategory,
-
+    mostDemanding,
     pageCount,
     cartQuantity,
     setCartQuantity,

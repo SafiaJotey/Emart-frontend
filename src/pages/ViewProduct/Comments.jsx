@@ -5,7 +5,7 @@ const Comments = ({ id }) => {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/review/${id}`)
+    fetch(`https://emart-98vu.onrender.com/api/v1/review/${id}`)
       .then((res) => res.json())
       .then((data) => setComments(data.data));
   }, [id, comments]);

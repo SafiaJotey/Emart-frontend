@@ -14,14 +14,14 @@ const Shop = () => {
       {/* <Search></Search> */}
 
       <div className="flex justify-center container mx-auto">
-        <div className="hidden md:block m-1 w-2/12   ">
-          <div className="md:sticky md:top-12">
+        <div className="hidden md:block m-1 w-2/12  ">
+          <div className="md:sticky md:top-14">
             <div className="bg-primary   text-white text-center py-3">
               {' '}
               Sort By Category
             </div>
             <div
-              className="text-center py-3 shadow-sm cursor-pointer text-black hover:bg-reviewColor hover:text-white active:bg-reviewColor"
+              className="text-center py-3 shadow-sm cursor-pointer text-black hover:bg-reviewColor hover:text-white active:bg-primary"
               onClick={() => setCategory("Men's Sneaker")}
             >
               Men's Sneaker
@@ -83,11 +83,11 @@ const Shop = () => {
             {' '}
             <Banner></Banner>
             <div className=" my-20 w-100  px-0 md:px-4">
-              <h2 className=" text-4xl font-bold  my-8  text-secondary flex  justify-center">
-                Explore All Products
-              </h2>
               <div className="flex flex-col-reverse  md:flex-row  md: justify-center    ">
                 <div className="flex flex-col justify-center items-center w-full md:w-2/3">
+                  <h2 className=" text-4xl font-bold  my-8  text-secondary flex flex-column justify-center">
+                    Explore All Products
+                  </h2>
                   <Product key={products._id}></Product>
                 </div>
 

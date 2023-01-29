@@ -10,19 +10,21 @@ import {
 } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import InitializationAuthentication from '../firebase/firebase.init';
+
 InitializationAuthentication();
 const useFirebase = () => {
+  // const [alertVisible, setIsAlertVisible] = useState(false);
   const [user, setUser] = useState({});
   const [userTrue, setUserTrue] = useState({});
-  const [name, setName] = useState('');
-  const [successAlert, setSuccessAlert] = useState('');
-  const [errorAlert, setErrorAlert] = useState('');
+  // const [name, setName] = useState('');
+  // const [successAlert, setSuccessAlert] = useState('');
+  // const [errorAlert, setErrorAlert] = useState('');
   const [loading, setLoading] = useState(true);
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
 
   //register a new user
-  const signUp = (data, location, navigate) => {
+  const signUp = (data, navigate) => {
     setLoading(true);
 
     createUserWithEmailAndPassword(auth, data.email, data.password)
@@ -30,9 +32,11 @@ const useFirebase = () => {
         // Signed in
 
         const user = result.user;
+        console.log(user);
         setUserName(data.name);
+        // setIsAlertVisible(true);
 
-        // navigate(redirect_uri);
+        navigate('/');
         // localStorage.setItem('token', JSON.stringify(result?.data?.token));
         // setSuccessAlert('user created successfully');
         // setErrorAlert('');
@@ -52,16 +56,15 @@ const useFirebase = () => {
       });
   };
   //sign in withEmailPassword
-  const signinWithEmail = (data, location, navigate) => {
+  const signinWithEmail = (data, navigate, destination) => {
     setLoading(true);
 
-    const redirect_uri = location?.state?.from || '/';
     const { email, password } = data;
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        // ...
+        navigate(destination);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -88,6 +91,7 @@ const useFirebase = () => {
     signOut(auth)
       .then(() => {
         setUser({});
+        localStorage.removeItem('token');
       })
       .catch((error) => {
         // An error happened.
@@ -101,7 +105,7 @@ const useFirebase = () => {
   // useEffect(() => {
   //   const token = JSON.parse(localStorage.getItem('token'));
 
-  //   fetch('http://localhost:5000/api/v1/auth/getUser', {
+  //   fetch('https://emart-98vu.onrender.com/api/v1/auth/getUser', {
   //     headers: { authorization: `Bearer ${token}` },
   //   })
   //     .then((res) => res.json())
@@ -144,8 +148,10 @@ const useFirebase = () => {
     signinWithGoogle,
     signUp,
     logOut,
-    successAlert,
-    errorAlert,
+    // successAlert,
+    // errorAlert,
+    // alertVisible,
+    // setIsAlertVisible,
   };
 };
 export default useFirebase;
