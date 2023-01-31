@@ -15,61 +15,21 @@ InitializationAuthentication();
 const useFirebase = () => {
   // const [alertVisible, setIsAlertVisible] = useState(false);
   const [user, setUser] = useState({});
-  const [userTrue, setUserTrue] = useState({});
-  // const [name, setName] = useState('');
-  // const [successAlert, setSuccessAlert] = useState('');
-  // const [errorAlert, setErrorAlert] = useState('');
+
   const [loading, setLoading] = useState(true);
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
 
   //register a new user
-  const signUp = (data, navigate) => {
+  const signUp = (data) => {
     setLoading(true);
-
-    createUserWithEmailAndPassword(auth, data.email, data.password)
-      .then((result) => {
-        // Signed in
-
-        const user = result.user;
-        console.log(user);
-        setUserName(data.name);
-        // setIsAlertVisible(true);
-
-        navigate('/');
-        // localStorage.setItem('token', JSON.stringify(result?.data?.token));
-        // setSuccessAlert('user created successfully');
-        // setErrorAlert('');
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage);
-        // setSuccessAlert('');
-        // setErrorAlert(errorMessage);
-      })
-      .finally(() => {
-        // setSuccessAlert('');
-        // setErrorAlert('');
-        setLoading(false);
-      });
+    return createUserWithEmailAndPassword(auth, data.email, data.password);
   };
   //sign in withEmailPassword
-  const signinWithEmail = (data, navigate, destination) => {
+  const signinWithEmail = (data) => {
     setLoading(true);
-
     const { email, password } = data;
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        navigate(destination);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      });
+    return signInWithEmailAndPassword(auth, email, password);
   };
 
   //sign in with google
@@ -78,17 +38,19 @@ const useFirebase = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;
+        console(user);
 
         navigate(redirect_uri);
       })
       .catch((error) => {});
+    setLoading(false);
   };
 
   // Logout
   const logOut = () => {
     setLoading(true);
 
-    signOut(auth)
+    return signOut(auth)
       .then(() => {
         setUser({});
         localStorage.removeItem('token');
@@ -114,36 +76,42 @@ const useFirebase = () => {
   //       setUser(data.data);
   //     });
   // }, [userTrue.email]);
-
-  //observe user state
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser({});
-      }
-      setLoading(false);
-    });
-    return () => unsubscribe;
-  }, [auth]);
-
-  const setUserName = (name) => {
+  const updateUserProfile = (name) => {
+    setLoading(true);
     updateProfile(auth.currentUser, {
       displayName: name,
     })
       .then(() => {
         // Profile updated!
+        // ...
       })
-      .catch((error) => {});
+      .catch((error) => {
+        // An error occurred
+        // ...
+      });
   };
+  //observe user state
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        // const uid = currentUser.uid;
+        setUser(currentUser);
+        setLoading(false);
+        // ...
+      } else {
+        // User is signed out
+        // ...
+      }
+    });
+    return () => unsubscribe;
+  }, [auth]);
 
   return {
     loading,
     user,
-    setUser,
-    userTrue,
-    setUserTrue,
+    updateUserProfile,
     signinWithEmail,
     signinWithGoogle,
     signUp,

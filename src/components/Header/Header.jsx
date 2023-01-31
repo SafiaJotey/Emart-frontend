@@ -46,7 +46,7 @@ const Header = () => {
                 <span className="text-white mx-2 text-sm md:text-lg">
                   Welcome !
                 </span>{' '}
-                {user.displayName}
+                {user?.displayName}
               </span>
             </div>
             <button
@@ -114,7 +114,7 @@ const Header = () => {
                   <span className="text-white mx-2 text-sm md:text-lg">
                     Welcome !
                   </span>{' '}
-                  {user.displayName}
+                  {user?.name}
                 </span>
               </div>
               <button

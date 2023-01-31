@@ -88,7 +88,7 @@ const Shop = () => {
                   <h2 className=" text-4xl font-bold  my-8  text-secondary flex flex-column justify-center">
                     Explore All Products
                   </h2>
-                  <Product key={products._id}></Product>
+                  <Product key={products.id}></Product>
                 </div>
 
                 <div className="order-container w-full md:w-1/3 bg-shape">
