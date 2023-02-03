@@ -26,16 +26,18 @@ const Cart = (props) => {
         Order Summery:
       </h3>
       <div className="my-4">
-        <h5 className="font-bold"> Total Items: {totalQuantity}</h5>
-        <h5 className="font-bold">Product Price: {total.toFixed(2)}</h5>
+        <h5 className="font-bold text-lg"> Total Items: {totalQuantity}</h5>
+        <h5 className="font-bold text-sm">Product Price: {total.toFixed(2)}</h5>
 
-        <h5 className="font-bold">Items list: </h5>
+        <h5 className="font-bold text-sm">Items list: </h5>
         {cart.map((item) => (
           <Items item={item} handleRemove={handleRemove} />
         ))}
-        <h5 className="font-bold">Shipping Charge: $ {shippingCharge}</h5>
-        <h5 className="font-bold mb-4"> Tax : $ {tax.toFixed(2)}</h5>
-        <h5 className="font-bold overline overline-offset-8 text-secondary">
+        <h5 className="font-bold text-sm">
+          Shipping Charge: $ {shippingCharge}
+        </h5>
+        <h5 className="font-bold mb-4 text-sm"> Tax : $ {tax.toFixed(2)}</h5>
+        <h5 className="font-bold overline overline-offset-8 text-secondary text-sm">
           {' '}
           Total Amount: $ {grandTotal.toFixed(2)}
         </h5>

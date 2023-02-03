@@ -4,7 +4,7 @@ import { addToDb, getStoreCart, removeFromDb } from '../utilities/fakedb';
 const useProducts = () => {
   let countQuantity = 0;
   const [products, setProducts] = useState([]);
-
+  const [grid, setGrid] = useState(true);
   const [category, setCategory] = useState('');
   const [allProducts, setAllProducts] = useState([]);
   const [cartQuantity, setCartQuantity] = useState(0);
@@ -16,7 +16,7 @@ const useProducts = () => {
   const [productByCategory, setProductByCategory] = useState([]);
   const [mostDemanding, setMostDemanding] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/api/v1/product/getPopularProduct')
+    fetch('https://emart-98vu.onrender.com/api/v1/product/getPopularProduct')
       .then((res) => res.json())
       .then((data) => setMostDemanding(data.data));
   }, []);
@@ -68,7 +68,7 @@ const useProducts = () => {
         setProducts(data.data.product);
         setDisplayProducts(data.data.product);
 
-        const pageNummber = Math.ceil(data.data.total / 8);
+        const pageNummber = Math.ceil(data.data.total / 9);
         setPageCount(pageNummber);
       });
   }, [page]);
@@ -108,6 +108,7 @@ const useProducts = () => {
         setAllProducts(data.data.product);
       });
   }, [category]);
+
   const handleSearch = (e) => {
     const searchText = e.target.value;
     const matchedProduct = allProducts.filter((product) =>
@@ -137,6 +138,8 @@ const useProducts = () => {
     setPage,
     category,
     setCategory,
+    grid,
+    setGrid,
   };
 };
 
