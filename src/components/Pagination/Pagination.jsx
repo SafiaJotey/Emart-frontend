@@ -4,13 +4,13 @@ const Pagination = () => {
   const { pageCount, page, setPage } = useItem();
 
   return (
-    <div>
+    <div className="my-5 flex justify-center">
       {[...Array(pageCount).keys()].map((number) => (
         <button
           className={
             number === page
-              ? 'py-1 px-3 m-1 border-2 border-black rounded-lg bg-white text-black'
-              : 'py-1 px-3 m-1 border-2 rounded-lg bg-primary text-white'
+              ? ' m-1 border-2 border-black  bg-white text-black flex justify-center items-center text-xs rounded-full w-5 h-5 '
+              : 'm-1 border-2  bg-primary text-white flex justify-center items-center text-xs rounded-full w-5 h-5'
           }
           key={number}
           onClick={() => setPage(number)}

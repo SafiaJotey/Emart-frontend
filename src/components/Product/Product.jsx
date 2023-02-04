@@ -14,14 +14,20 @@ const Product = () => {
   return (
     <div>
       <div className="flex justify-start items-center p-2">
-        <BsFillGridFill
-          className="p-2 text-4xl cursor-pointer"
-          onClick={() => setGrid(true)}
-        />
-        <FaThList
-          className="p-2 text-4xl cursor-pointer"
-          onClick={() => setGrid(false)}
-        ></FaThList>
+        <div className="bg-primary p-1 m-1  rounded-md">
+          {' '}
+          <FaThList
+            className="p-2 text-4xl cursor-pointer  text-white"
+            onClick={() => setGrid(false)}
+          ></FaThList>
+        </div>
+        <div className="bg-primary p-1 my-1 rounded-md">
+          {' '}
+          <BsFillGridFill
+            className="p-2 text-4xl text-white cursor-pointer"
+            onClick={() => setGrid(true)}
+          />
+        </div>
       </div>
       <div className="product-container md:border-r-secondary-200 md:border-r-2 ">
         {displaProducts.length === 0 ? (
@@ -29,61 +35,70 @@ const Product = () => {
             <p>No products found.</p>
           </div>
         ) : grid ? (
-          <div className="flex flex-row flex-wrap">
+          <div className="flex flex-row flex-wrap  justify-center items-center">
             {displaProducts?.map((product) => (
-              <div className="w-1/3 p-1 ">
-                <div className="shadow-lg  p-3  border-0  min-h-[480px]">
+              <div className="w-full md:w-1/3 md:p-1 ">
+                <div className="shadow-lg px-3  border-0 rounded-lg ">
+                  {' '}
                   <img
-                    className=" border-2 rounded "
+                    className="  border-2 rounded "
                     src={product.img}
                     alt="product"
                   />
-                  <small className="font-bold text-primary">
-                    name:{product.name}
-                  </small>
-                  <br />
-                  <small>category:{product.category}</small>
+                  <div className="min-h-[160px]">
+                    <small className=" text-primary text-md">
+                      {product.name}
+                    </small>
+                    <br />
+                    <small className=" text-primary fw-bold p-1">
+                      {product.category}
+                    </small>
+                    <small className="pl-5 text-peimary text-lg">
+                      ${product.price}
+                    </small>
 
-                  <div className="flex flex-row justify-between items-center">
-                    {' '}
-                    <small>${product.price}</small>
-                    <p className="text-md text-reviewColor font-bold  ">
+                    <div className="flex flex-row justify-between items-center">
                       {' '}
-                      <Rating
-                        initialRating={product.ratings}
-                        readonly
-                        emptySymbol={<FiStar />}
-                        fullSymbol={<AiTwotoneStar />}
-                      />
-                    </p>
-                    <p
-                      className="text-md text-primary 
+                      <p className="text-lg text-reviewColor font-bold  ">
+                        {' '}
+                        <Rating
+                          initialRating={product.ratings}
+                          readonly
+                          emptySymbol={<FiStar />}
+                          fullSymbol={<AiTwotoneStar />}
+                        />
+                      </p>
+                      <p
+                        className="text-md text-primary 
                   font-bold"
-                    >
-                      ({product.ratingsCount})
-                    </p>
-                  </div>
-                  <div className="my-1">
-                    <p className="font-xs text-secondary">select quantity</p>
-                    <button
-                      className="p-2 bg-shape rounded-sm"
-                      onClick={() => handleQuantity(true, product)}
-                    >
-                      <AiOutlinePlus />
-                    </button>
-                    <input
-                      type="text"
-                      className="w-1/6 text-center mx-2"
-                      id={product.id}
-                      min={1}
-                      value="1"
-                    />
-                    <button
-                      className="p-2 bg-shape rounded-sm"
-                      onClick={() => handleQuantity(false, product)}
-                    >
-                      <AiOutlineMinus />
-                    </button>
+                      >
+                        ({product.ratingsCount})
+                      </p>
+                    </div>
+                    <div className="my-1">
+                      <p className="font-xs text-primary">select quantity</p>
+                      <div>
+                        <button
+                          className="p-1 text-primary rounded-sm"
+                          onClick={() => handleQuantity(true, product)}
+                        >
+                          <AiOutlinePlus />
+                        </button>
+                        <input
+                          type="text"
+                          className="w-1/6 text-center mx-2"
+                          id={product.id}
+                          min={1}
+                          value="1"
+                        />
+                        <button
+                          className="p-1  text-primary rounded-sm"
+                          onClick={() => handleQuantity(false, product)}
+                        >
+                          <AiOutlineMinus />
+                        </button>
+                      </div>
+                    </div>
                   </div>
                   <div className="flex justify-between items-center">
                     <button
@@ -91,8 +106,8 @@ const Product = () => {
                       onClick={() => handleProduct(product)}
                     >
                       {' '}
-                      <div className="flex justify-between text-white items-center text-sm">
-                        <FaShoppingCart /> <h5>Add to cart</h5>
+                      <div className="flex justify-between text-white items-center text-lg">
+                        <FaShoppingCart />
                       </div>
                     </button>
                     <div>

@@ -9,16 +9,16 @@ import Rating from 'react-rating';
 const Popular = () => {
   const { mostDemanding } = useProducts();
   const navigate = useNavigate();
-  const randomProduct = mostDemanding
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 3);
+  // const randomProduct = mostDemanding
+  //   .sort(() => Math.random() - 0.5)
+  //   .slice(0, 3);
   const handleView = (e, id) => {
     navigate(`/product/${id}`);
   };
 
   return (
     <div className="">
-      {randomProduct.slice(0, 3).map((product) => {
+      {mostDemanding.slice(0, 3).map((product) => {
         return (
           <div
             onClick={(e) => handleView(e, product._id)}

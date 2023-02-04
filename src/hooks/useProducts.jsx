@@ -4,7 +4,7 @@ import { addToDb, getStoreCart, removeFromDb } from '../utilities/fakedb';
 const useProducts = () => {
   let countQuantity = 0;
   const [products, setProducts] = useState([]);
-  const [grid, setGrid] = useState(true);
+  const [grid, setGrid] = useState(false);
   const [category, setCategory] = useState('');
   const [allProducts, setAllProducts] = useState([]);
   const [cartQuantity, setCartQuantity] = useState(0);

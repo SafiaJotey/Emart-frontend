@@ -21,8 +21,8 @@ const Cart = (props) => {
   setTotalPrice(grandTotal);
 
   return (
-    <div className="flex flex-col items-start p-5 md:sticky md:top-16">
-      <h3 className="text-2xl font-bold text-secondary underline underline-offset-8">
+    <div className="flex flex-col items-start p-5 md:sticky md:top-16 shadow-lg h-min[400px] rounded">
+      <h3 className="text-2xl font-bold text-primary underline underline-offset-8">
         Order Summery:
       </h3>
       <div className="my-4">

@@ -4,7 +4,7 @@ module.exports = {
     extend: {
       colors: {
         primary: 'black',
-        secondary: '#006877',
+        secondary: '#006E61',
         reviewColor: '#ffc108',
         bannerBg: '#f2d6ef',
         bgCircle: '#f2f2f2',
