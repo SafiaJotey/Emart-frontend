@@ -33,17 +33,9 @@ const useFirebase = () => {
   };
 
   //sign in with google
-  const signinWithGoogle = (location, navigate) => {
-    const redirect_uri = location?.state?.from || '/';
-    signInWithPopup(auth, googleProvider)
-      .then((result) => {
-        const user = result.user;
-        console(user);
-
-        navigate(redirect_uri);
-      })
-      .catch((error) => {});
-    setLoading(false);
+  const signinWithGoogle = () => {
+    setLoading(true);
+    return signInWithPopup(auth, googleProvider);
   };
 
   // Logout

@@ -31,6 +31,14 @@ const Login = () => {
         // const errorMessage = error.message;
       });
   };
+  const handleGoogleSignin = () => {
+    signinWithGoogle()
+      .then((result) => {
+        const user = result.user;
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {});
+  };
   // useEffect(() => {
   //   fetch('https://emart-98vu.onrender.com/api/v1/auth/login', {
   //     method: 'POST',
@@ -145,7 +153,7 @@ const Login = () => {
 
       <div>
         <button
-          onClick={() => signinWithGoogle(location, navigate)}
+          onClick={handleGoogleSignin}
           className="px-10 py-2  rounded-sm bg-primary font-bold text-white"
         >
           SignIn with Google

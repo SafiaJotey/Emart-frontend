@@ -1,7 +1,5 @@
 import React from 'react';
 import banner2 from '../../images/banner2.png';
-import banner3 from '../../images/banner3 .png';
-import banner4 from '../../images/banner4.png';
 const Carousel = () => {
   return (
     <div
@@ -49,7 +47,7 @@ const Carousel = () => {
           </div>
         </div>
 
-        <div className="carousel-item  relative float-left w-full ">
+        {/* <div className="carousel-item  relative float-left w-full ">
           <div className="w-full flex justify-between items-center    ">
             <div className="px-12  text-start">
               <h1 className=" font-bold text-start md:text-start  text-2xl md:text-3xl py-2">
@@ -99,7 +97,7 @@ const Carousel = () => {
               <img src={banner3} className=" w-8/12 ml-12 mb-2" alt="banner" />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -15,10 +15,13 @@ const useProducts = () => {
   const [page, setPage] = useState(0);
   const [productByCategory, setProductByCategory] = useState([]);
   const [mostDemanding, setMostDemanding] = useState([]);
+
   useEffect(() => {
     fetch('https://emart-98vu.onrender.com/api/v1/product/getPopularProduct')
       .then((res) => res.json())
-      .then((data) => setMostDemanding(data.data));
+      .then((data) => {
+        setMostDemanding(data.data);
+      });
   }, []);
 
   const handleProduct = (product, count) => {
