@@ -8,11 +8,11 @@ const Footer = () => {
         <h6 className="w-full md:w-3/12 text-start my-2 md:my-0">
           Sign Up to Newsletter
         </h6>
-        <p className="text-bold w-full md:w-4/12 text-justify  my-2 md:my-0">
+        <small className="text-bold w-full md:w-4/12 text-justify  my-2 md:my-0">
           Get all the latest information on Sales and Offers.
           <br />
           Receive $10 coupon for first shopping.
-        </p>
+        </small>
         <div className="w-full md:w-5/12 text-center my-2 md:my-0">
           <input
             type="text"
@@ -24,31 +24,31 @@ const Footer = () => {
           </button>
         </div>
       </div>
-      <div className="flex flex-wrap flex-row justify-between items-center container mx-auto  py-10 border-b-2 border-shape- ">
+      <div className="flex flex-wrap flex-row justify-between items-start container mx-auto  py-10 border-b-2  ">
         <div className="w-full md:w-4/12 p-4  text-center md:text-justify">
           <Logo />
-          <p>
+          <small>
             EMART is best online shopping store in Bangladesh that features 10+
             million products at affordable prices. As bangaldesh's online
             shopping landscape is expanding every year, online shopping in
             dhaka, chittagong, khulna, sylhet and other big cities are also
             gaining momentum.
-          </p>
+          </small>
         </div>
-        <div className="w-6/12 text-sm md:w-2/12 p-2">
-          <h5 className="text-xl text-bold my-4">Contact</h5>
+        <div className="w-6/12 text-sm md:w-2/12 px-3">
+          <h5 className="text-xl text-bold my-4 p-2">Contact</h5>
 
           <h6 className="text-md text-bold">Email:</h6>
-          <p className="mb-2">emart@gmail.com</p>
+          <small className="mb-2">emart@gmail.com</small>
           <h6 className="text-md text-bold">Contact:</h6>
-          <p className="mb-2">+88017000000</p>
+          <small className="mb-2">+88017000000</small>
           <h6 className="text-md text-bold">Address:</h6>
-          <p className="mb-2">
+          <small className="mb-2">
             House # 7/B, Flat # A-1, Road # 103 Gulshan-2,Dhaka-1212
-          </p>
+          </small>
         </div>
-        <div className="w-6/12 text-sm md:w-2/12 p-2">
-          <h5 className="text-xl text-bold my-4">Account</h5>
+        <div className="w-6/12 text-sm md:w-2/12 px-3">
+          <h5 className="text-xl text-bold my-4 p-2">Account</h5>
 
           <p className="mb-2">Ticket</p>
 
@@ -61,8 +61,8 @@ const Footer = () => {
 
           <p className="mb-2">Policy</p>
         </div>
-        <div className="w-6/12 text-sm md:w-2/12 p-2">
-          <h5 className="text-xl text-bold my-4"> About</h5>
+        <div className="w-6/12 text-sm md:w-2/12 px-3">
+          <h5 className="text-xl text-bold my-4 p-2"> About</h5>
 
           <p className="mb-2">About</p>
 
@@ -76,19 +76,22 @@ const Footer = () => {
           <p className="mb-2">Shop</p>
         </div>
 
-        <div className="w-6/12 md:w-2/12 p-2">
-          <h5 className="text-xl text-bold my-4"> Top Brands</h5>
+        <div className="w-6/12  md:w-2/12 p-2">
+          <h5 className="text-xl text-bold my-3 p-2"> Top Brands</h5>
 
-          <p className="mb-2">Daraz Bangladesh</p>
+          <small className="mb-2">Daraz Bangladesh</small>
+          <br />
 
-          <p className="mb-2">Alibaba Online</p>
+          <small className="mb-2">Alibaba Online</small>
+          <br />
 
-          <p className="mb-2">Pikabo Bangladesh</p>
-          <p className="mb-2">Mena Bazar</p>
-
-          <p className="mb-2">Bongo Bazar</p>
-
-          <p className="mb-2">Ali-Express</p>
+          <small className="mb-2">Pikabo Bangladesh</small>
+          <br />
+          <small className="mb-2">Mena Bazar</small>
+          <br />
+          <small className="mb-2">Bongo Bazar</small>
+          <br />
+          <small className="mb-2">Ali-Express</small>
         </div>
       </div>
       <div>

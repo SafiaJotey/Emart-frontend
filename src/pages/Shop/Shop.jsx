@@ -12,12 +12,12 @@ const Shop = () => {
   const { cart, products, category, setCategory } = useItem();
 
   return (
-    <>
+    <div className="">
       {/* <Search></Search> */}
       {products.length ? (
         <div>
-          <div className="flex justify-center container mx-auto">
-            <div className="hidden md:block m-1 w-2/12  ">
+          <div className="flex justify-center container mx-auto ">
+            <div className="hidden md:block m-1 w-2/12 ">
               <div className="md:sticky md:top-14">
                 <div className="bg-primary   text-white text-center py-3">
                   {' '}
@@ -115,7 +115,7 @@ const Shop = () => {
       ) : (
         <Spinner />
       )}
-    </>
+    </div>
   );
 };
 
