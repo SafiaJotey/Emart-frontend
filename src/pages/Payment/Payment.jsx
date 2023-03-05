@@ -13,7 +13,6 @@ const Payment = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm();
   const onSubmit = (data) => {
     setShowModal(true);

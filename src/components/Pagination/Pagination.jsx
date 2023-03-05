@@ -1,4 +1,4 @@
-import useItem from '../../hooks/useItem';
+import { useItem } from '../../context/ProductProvider';
 
 const Pagination = () => {
   const { pageCount, page, setPage } = useItem();

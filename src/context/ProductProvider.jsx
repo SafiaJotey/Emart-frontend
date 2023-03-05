@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React, { createContext, useContext } from 'react';
 import useProducts from '../hooks/useProducts';
 export const ProductContext = createContext();
 const ProductProvider = ({ children }) => {
@@ -9,6 +9,9 @@ const ProductProvider = ({ children }) => {
       {children}
     </ProductContext.Provider>
   );
+};
+export const useItem = () => {
+  return useContext(ProductContext);
 };
 
 export default ProductProvider;

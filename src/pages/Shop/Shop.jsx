@@ -5,7 +5,8 @@ import Footer from '../../components/Footer/Footer';
 import CategoryProducts from '../../components/Product/CategoryProducts';
 import Product from '../../components/Product/Product';
 import Spinner from '../../components/Spinner/Spinner';
-import useItem from '../../hooks/useItem';
+import { useItem } from '../../context/ProductProvider';
+
 import Services from '../../Services/Services';
 
 const Shop = () => {
@@ -16,7 +17,7 @@ const Shop = () => {
       {/* <Search></Search> */}
       {products.length ? (
         <div>
-          <div className="flex justify-center container mx-auto ">
+          <div className="flex justify-center md:container mx-auto ">
             <div className="hidden md:block m-1 w-2/12 ">
               <div className="md:sticky md:top-14">
                 <div className="bg-primary   text-white text-center py-3">
@@ -89,7 +90,7 @@ const Shop = () => {
                 <div className=" my-20 w-100  px-0 md:px-4">
                   <div className="flex flex-col-reverse  md:flex-row  md: justify-center    ">
                     <div className="flex flex-col justify-center items-center w-full md:w-9/12">
-                      <h2 className=" text-3xl font-bold  my-5  text-secondary flex flex-column justify-center">
+                      <h2 className=" text-3xl font-bold   text-secondary flex flex-column justify-center">
                         Explore All Products
                       </h2>
                       <Product key={products.id}></Product>

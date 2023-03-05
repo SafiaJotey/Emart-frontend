@@ -1,8 +1,9 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { useEffect, useState } from 'react';
 import Spinner from '../../components/Spinner/Spinner';
+import { useItem } from '../../context/ProductProvider';
 import useAuth from '../../hooks/useAuth';
-import useItem from '../../hooks/useItem';
+
 import { clearTheCart } from '../../utilities/fakedb';
 
 const CheckoutForm = ({ data }) => {

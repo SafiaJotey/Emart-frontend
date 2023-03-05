@@ -1,4 +1,4 @@
-import useItem from '../../hooks/useItem';
+import { useItem } from '../../context/ProductProvider';
 import Items from '../Items/Items';
 
 const Cart = (props) => {

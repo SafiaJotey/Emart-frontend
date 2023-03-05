@@ -1,6 +1,7 @@
 import { FaShoppingCart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import useItem from '../../hooks/useItem';
+import { useItem } from '../../context/ProductProvider';
+
 import banner1 from '../../images/banner1.png';
 import Popular from '../Popular/Popular';
 import Carousel from './Carousel';
@@ -8,7 +9,7 @@ const Banner = () => {
   const { handleSearch, cartQuantity } = useItem();
 
   return (
-    <div>
+    <>
       <div className=" bg-secondary flex justify-between items-center py-2 px-2 md:px-5 ">
         <input
           className="w-full md:w-3/5 p-2 rounded-sm "
@@ -57,7 +58,7 @@ const Banner = () => {
             {' '}
             <button className="xl:px-20 py-2  bg-reviewColor rounded-lg text-xm  px-12 lg:text-sm lg:font-bold my-2">
               {' '}
-              Most Popular
+              Top Rated{' '}
             </button>
           </Link>
           <div>
@@ -65,7 +66,7 @@ const Banner = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

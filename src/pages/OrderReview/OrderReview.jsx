@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Cart from '../../components/Cart/Cart';
-import useItem from '../../hooks/useItem';
+import { useItem } from '../../context/ProductProvider';
+
 import Order from './Order';
 
 const OrderReview = () => {

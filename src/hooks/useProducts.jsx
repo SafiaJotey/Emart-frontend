@@ -1,7 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
+import { actionType } from '../state/ProductState/actionTypes';
+import {
+  initialState,
+  ProductReducer,
+} from '../state/ProductState/ProductReducer';
 import { addToDb, getStoreCart, removeFromDb } from '../utilities/fakedb';
 
 const useProducts = () => {
+  const [state, dispatch] = useReducer(ProductReducer, initialState);
   let countQuantity = 0;
   const [products, setProducts] = useState([]);
   const [grid, setGrid] = useState(false);
@@ -104,11 +110,19 @@ const useProducts = () => {
   };
 
   useEffect(() => {
+    dispatch({ type: actionType.FETCHING_START });
     fetch('https://emart-98vu.onrender.com/api/v1/product/getProduct')
       .then((res) => res.json())
       .then((data) => {
         setProductByCategory(data.data.product);
+        dispatch({
+          type: actionType.FETCHING_SUCCESS,
+          payload: data.data.product,
+        });
         setAllProducts(data.data.product);
+      })
+      .catch(() => {
+        dispatch({ type: actionType.FETCHING_ERROR });
       });
   }, [category]);
 
@@ -143,6 +157,8 @@ const useProducts = () => {
     setCategory,
     grid,
     setGrid,
+    state,
+    dispatch,
   };
 };
 
