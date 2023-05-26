@@ -5,23 +5,23 @@ import PopularCard from './PopularCard';
 
 const Popular = () => {
   const {
-    state: { loading, error, product },
+    state: { loading, error, displayProduct },
   } = useItem();
 
   let content;
 
   if (loading) {
-    content = <small className="text-baseColor">loading....</small>;
+    content = <small className="text-baseColor">Loading.....</small>;
   } else if (error) {
     content = <p>something went wrong</p>;
-  } else if (!loading && !error && product.length === 0) {
+  } else if (!loading && !error && displayProduct.length === 0) {
     content = (
       <div>
         <p>No products found.</p>
       </div>
     );
-  } else if (!loading && !error && product.length) {
-    content = product
+  } else if (!loading && !error && displayProduct.length) {
+    content = displayProduct
       .filter((prd) => prd.ratings === 5)
       .slice(0, 3)
       .map((singleProduct) => (

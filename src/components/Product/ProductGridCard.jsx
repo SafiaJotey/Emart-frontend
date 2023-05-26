@@ -6,7 +6,9 @@ import { FiStar } from 'react-icons/fi';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 import { useItem } from '../../context/ProductProvider';
-const ProductGridCard = ({ product }) => {
+
+const ProductGridCard = ({ product, count }) => {
+  // const [value, setValue] = useState(1);
   const {
     handleProduct,
 
@@ -49,31 +51,42 @@ const ProductGridCard = ({ product }) => {
             <p className="font-xs text-primary">select quantity</p>
             <div>
               <button
-                className="p-1 text-primary rounded-sm"
+                className={`${
+                  product.addedToCart ? ' bg-gray-300 ' : ' bg-white '
+                } p-1 text-text-black rounded-sm shadow-md`}
                 onClick={() => handleQuantity(true, product)}
               >
-                <AiOutlinePlus />
+                <AiOutlinePlus className="text-xs" />
               </button>
               <input
                 type="text"
                 className="w-1/6 text-center mx-2"
                 id={product.id}
                 min={1}
-                value="1"
+                value={product.quantity ? product.quantity : 1}
               />
               <button
-                className="p-1  text-primary rounded-sm"
+                className={`${
+                  product.addedToCart ? ' bg-gray-300 ' : ' bg-white '
+                } p-1 text-black rounded-sm shadow-md`}
                 onClick={() => handleQuantity(false, product)}
               >
-                <AiOutlineMinus />
+                <AiOutlineMinus className="text-xs" />
               </button>
             </div>
           </div>
         </div>
         <div className="flex justify-between items-center">
           <button
-            className="px-5 py-2 rounded-lg bg-primary text-sm font-bold my-2 "
-            onClick={() => handleProduct(product)}
+            className={`{${
+              !product.addedToCart
+                ? ' bg-primary text-sm '
+                : ' bg-gray-300 text-sm '
+            }} px-5 py-2 rounded- font-bold my-2`}
+            onClick={() => {
+              handleProduct(product);
+            }}
+            disabled={product.addedToCart}
           >
             {' '}
             <div className="flex justify-between text-white items-center text-lg">

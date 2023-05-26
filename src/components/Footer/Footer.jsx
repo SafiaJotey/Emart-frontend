@@ -4,7 +4,7 @@ import Logo from '../Logo/Logo';
 const Footer = () => {
   return (
     <div className="bg-shape">
-      <div className="flex flex-col md:flex-row justify-between items  text-md center px-10 py-8 bg-secondary text-white">
+      <div className="flex flex-col md:flex-row justify-between items  text-md center px-10 py-8 bg-primary text-white">
         <h6 className="w-full md:w-3/12 text-start my-2 md:my-0">
           Sign Up to Newsletter
         </h6>
@@ -19,7 +19,7 @@ const Footer = () => {
             placeholder="Enter Your Email"
             className="py-3 px-12 border border-transparent md:rounded-full md:rounded-r-lg my-2 md:my-0"
           />
-          <button className="py-3 px-5  border border-transparent bg-primary text-white  md:rounded-full md:rounded-l-lg">
+          <button className="py-3 px-5  shadow-lg  border border-base bg-primary text-white md:rounded-full md:rounded-l-lg">
             Subscribe
           </button>
         </div>

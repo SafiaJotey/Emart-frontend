@@ -7,11 +7,7 @@ import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 import { useItem } from '../../context/ProductProvider';
 const ProductListCard = ({ product }) => {
-  const {
-    handleProduct,
-
-    handleQuantity,
-  } = useItem();
+  const { dispatch, handleQuantity, handleProduct } = useItem();
   return (
     <div className="w-full">
       <div className="flex flex-col justify-center items-center  md:flex-row   p-1 border-b-2 border-b-secondary-200">
@@ -19,23 +15,21 @@ const ProductListCard = ({ product }) => {
           <img src={product.img} alt="product" />
         </div>
         <div className="details w-full md:w-2/3 text-justify md:text-left py-5 px-2 md:px-5">
-          <h2 className="text-md md:text-lg text-primary font-bold">
+          <h2 className="text-md md:text-lg text-primary font-bold text-xs">
             {' '}
             Product Name: {product.name}
           </h2>
-          <p className="text-sm font-bold">Category: {product.category}</p>
+          <p className="text-xs ">Category: {product.category}</p>
           {/* <small className="text-sm text-secondary">
             ID: {product.id}
           </small>
           <p className="text-lg">By: {product.seller}</p> */}
 
           <div className="flex  flex-col md:flex-row  items-start justify-start md:justify-between md:items-center">
-            <h6 className="text-lg text-primary font-bold">
-              Price: $ {product.price}
-            </h6>
+            <h6 className="text-xs text-primary ">Price: $ {product.price}</h6>
             <div className="flex flex-col md:flex-row justify-end items-center">
               {' '}
-              <p className="text-md text-reviewColor font-bold  ">
+              <p className="text-md text-reviewColor text-xs  ">
                 {' '}
                 <Rating
                   initialRating={product.ratings}
@@ -45,7 +39,7 @@ const ProductListCard = ({ product }) => {
                 />
               </p>
               <p
-                className="text-md text-primary 
+                className="text-xs text-primary 
             font-bold"
               >
                 ({product.ratingsCount})
@@ -55,29 +49,40 @@ const ProductListCard = ({ product }) => {
           <div className="my-1">
             <p className="font-xs text-secondary">select quantity</p>
             <button
-              className="p-2 bg-shape rounded-sm"
+              className={`${
+                product.addedToCart ? ' bg-gray-300 ' : ' bg-white '
+              } p-1 text-black rounded-sm shadow-md`}
               onClick={() => handleQuantity(true, product)}
+              disabled={product.addedToCart}
             >
-              <AiOutlinePlus />
+              <AiOutlinePlus className="text-xs" />
             </button>
             <input
               type="text"
               className="w-1/6 text-center mx-2"
               id={product.id}
               min={1}
-              value="1"
+              value={product.quantity ? product.quantity : 1}
             />
             <button
-              className="p-2 bg-shape rounded-sm"
+              className={`${
+                product.addedToCart ? ' bg-gray-300 ' : ' bg-white '
+              } p-1 text-black rounded-sm shadow-md`}
               onClick={() => handleQuantity(false, product)}
+              disabled={product.addedToCart}
             >
-              <AiOutlineMinus />
+              <AiOutlineMinus className="text-xs" />
             </button>
           </div>
           <div className="flex justify-between items-center">
             <button
-              className="px-5 py-2 rounded-lg bg-primary text-sm font-bold my-2 "
+              className={`{${
+                !product.addedToCart
+                  ? ' bg-primary text-sm '
+                  : ' bg-gray-300 text-sm '
+              }} px-5 py-2 rounded- font-bold my-2`}
               onClick={() => handleProduct(product)}
+              disabled={product.addedToCart}
             >
               {' '}
               <div className="flex justify-between text-white items-center">

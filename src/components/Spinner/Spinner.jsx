@@ -9,8 +9,8 @@ const Spinner = () => {
         width="80"
         ariaLabel="blocks-loading"
         wrapperStyle={{}}
-        wrapperClass="blocks-wrapper"
-        colors={['#006877', '#ffc108', 'black', '#006877', '#ffc108', 'black']}
+        wrapperclassName="blocks-wrapper"
+        colors={['#006877', 'black']}
       />
     </div>
   );

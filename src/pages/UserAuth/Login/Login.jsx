@@ -13,7 +13,7 @@ const Login = () => {
   // const [data, setData] = useState({});
   // const [successAlert, setSuccessAlert] = useState('');
 
-  const { signinWithEmail, signinWithGoogle, loading } = useAuth();
+  const { signinWithEmail, signinWithGoogle } = useAuth();
 
   const {
     register,
@@ -34,7 +34,7 @@ const Login = () => {
   const handleGoogleSignin = () => {
     signinWithGoogle()
       .then((result) => {
-        const user = result.user;
+        // const user = result.user;
         navigate(from, { replace: true });
       })
       .catch((error) => {});

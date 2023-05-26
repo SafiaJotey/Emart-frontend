@@ -36,7 +36,7 @@ const Order = () => {
                 >
                   View{' '}
                 </Link>
-                <button onClick={() => handleRemove(product._id)}>
+                <button onClick={() => handleRemove(product._id, product)}>
                   Remove
                 </button>
               </div>

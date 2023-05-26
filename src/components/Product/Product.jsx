@@ -7,29 +7,30 @@ import Spinner from '../Spinner/Spinner';
 import ProductGridCard from './ProductGridCard';
 import ProductListCard from './ProductListCard';
 
-const Product = () => {
+const Product = ({ displayProduct }) => {
   let content;
   const {
-    state: { loading, product, error },
+    state: { loading, error, category },
 
     grid,
     setGrid,
   } = useItem();
+
   if (loading) {
     content = <Spinner></Spinner>;
   } else if (error) {
     content = <p>something went wrong</p>;
-  } else if (!loading && !error && product.length === 0) {
+  } else if (!loading && !error && displayProduct.length === 0) {
     content = (
       <div>
         <p>No products found.</p>
       </div>
     );
-  } else if (!loading && !error && product.length) {
+  } else if (!loading && !error && displayProduct.length) {
     grid
       ? (content = (
           <div className="flex flex-row flex-wrap  justify-center items-center">
-            {product?.map((product) => (
+            {displayProduct?.map((product) => (
               <ProductGridCard
                 key={product._id}
                 product={product}
@@ -39,7 +40,7 @@ const Product = () => {
         ))
       : (content = (
           <div className="flex flex-col ">
-            {product?.map((product) => (
+            {displayProduct?.map((product) => (
               <ProductListCard
                 key={product._id}
                 product={product}
@@ -50,7 +51,7 @@ const Product = () => {
   }
 
   return (
-    <div>
+    <div className="w-full">
       <div className="flex justify-start items-center p-2">
         <div className="bg-primary p-1 m-1  rounded-md">
           {' '}
